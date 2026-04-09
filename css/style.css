@@ -1,28 +1,133 @@
-/* Reiniciamos el contador general */
+/* 1. RESET Y BASE */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    background-color: #e8e8e8; /* Mesa gris clara para resaltar el cuaderno */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* 2. EL CUADERNO (RECUADRO) */
+.notebook-container {
+    display: flex;
+    height: 94vh;
+    width: 96vw;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    border: 1px solid #dcdcdc;
+    position: relative;
+}
+
+/* 3. HOJA IZQUIERDA (DIBUJO) */
+.sketch-view {
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    padding: 60px;
+}
+
+.main-sketch {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+}
+
+/* 4. ELÁSTICO NEGRO */
+.elastic-band {
+    width: 24px;
+    background-color: #111;
+    z-index: 20;
+    box-shadow: inset 2px 0 8px rgba(255,255,255,0.05);
+}
+
+/* 5. HOJA DERECHA (SIDEBAR) */
+.sidebar {
+    width: 400px;
+    background-color: #fff;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-img {
+    width: calc(100% - 100px);
+    margin: 0 50px 80px 50px;
+    height: auto;
+}
+
+/* 6. NAVEGACIÓN Y CONTADORES */
 .navigation {
-    counter-reset: menu-index 0; 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    counter-reset: menu-index; /* Inicializa el contador en 0 */
 }
 
-/* Evitamos que 'inicio' sume al contador si queremos que Proyectos sea el 01 */
-.main-links li:first-child {
-    counter-increment: none;
+.navigation ul {
+    list-style: none;
+    padding: 0 50px;
 }
 
-.main-links li:first-child a::before {
-    content: ""; /* O podés ponerle 00 si preferís */
-    margin-right: 0;
+.menu-spacer {
+    flex: 1; /* Empuja el bloque inferior al fondo */
 }
 
-/* El resto de los ítems sí cuentan, empezando por Proyectos */
-.item-proyectos, .secundary-links li {
+/* 7. ESTILO DE LINKS Y NÚMEROS */
+.navigation li {
+    margin-bottom: 22px;
+    position: relative;
+}
+
+/* Solo sumamos al contador los ítems que NO sean 'inicio' */
+.navigation li:not(.nav-inicio) {
     counter-increment: menu-index;
 }
 
-/* Estilo para el rectángulo negro FIJO en Proyectos */
+.navigation a {
+    text-decoration: none;
+    color: #333;
+    font-size: 19px;
+    font-weight: 300;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+    height: 36px;
+    position: relative;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+/* Configuración de los Números Grandes y Negrita */
+.navigation a::before {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ccc;
+    margin-right: 30px;
+    width: 40px;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+}
+
+/* Aplicamos el número al contenido, excepto en inicio */
+.navigation li:not(.nav-inicio) a::before {
+    content: "0" counter(menu-index);
+}
+
+/* 8. EL RECTÁNGULO NEGRO (DESTACADO FIJO) */
 .destacado-fijo a {
     color: #fff !important;
-    position: relative;
-    z-index: 5;
 }
 
 .destacado-fijo a::before {
@@ -32,27 +137,17 @@
 .destacado-fijo::after {
     content: "";
     position: absolute;
-    right: -50px; /* Se pega al elástico */
+    /* Se extiende hasta el elástico */
+    right: -50px; 
     left: -20px;
-    top: -5px;
-    bottom: -5px;
-    background-color: #1a1a1a; /* Negro sólido */
-    z-index: 1; 
-    border-radius: 4px;
+    top: -4px;
+    bottom: -4px;
+    background-color: #1a1a1a;
+    z-index: 1;
+    border-radius: 4px 0 0 4px; /* Redondeado solo del lado izquierdo */
 }
 
-/* Ajuste de los números grandes y negrita como pediste */
-.navigation a::before {
-    content: "0" counter(menu-index);
-    font-size: 22px; /* Más grandes */
-    font-weight: bold; /* Negrita total */
-    color: #bbb;
-    margin-right: 25px;
-    display: inline-block;
-    width: 40px;
-}
-
-/* El resto de los links (equipo, contacto, etc.) sin fondo negro */
-.secundary-links a {
-    color: #333;
+/* Hover sutil para el resto */
+.navigation li:not(.destacado-fijo) a:hover {
+    color: #999;
 }
