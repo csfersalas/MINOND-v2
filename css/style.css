@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #e8e8e8; /* Mesa gris clara para resaltar el cuaderno */
+    background-color: #e8e8e8; /* Mesa gris clara que hace resaltar el cuaderno blanco */
     height: 100vh;
     display: flex;
     align-items: center;
@@ -15,24 +15,24 @@ body {
     overflow: hidden;
 }
 
-/* 2. EL CUADERNO (RECUADRO) */
+/* 2. EL CUADERNO (RECUADRO CON BORDES REDONDEADOS) */
 .notebook-container {
     display: flex;
     height: 94vh;
     width: 96vw;
     background-color: #fff;
-    border-radius: 12px;
+    border-radius: 12px; /* Bordes redondeados tipo Moleskine */
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12); /* Sombra para dar profundidad */
     border: 1px solid #dcdcdc;
     position: relative;
 }
 
-/* 3. HOJA IZQUIERDA (DIBUJO) */
+/* 3. HOJA IZQUIERDA (ESPACIO DE CROQUIS) */
 .sketch-view {
     flex: 1.2;
     display: flex;
-    align-items: left;
+    align-items: center;
     justify-content: center;
     background-color: #fafafa;
     padding: 60px;
@@ -44,7 +44,7 @@ body {
     object-fit: contain;
 }
 
-/* 4. ELÁSTICO NEGRO */
+/* 4. ELÁSTICO NEGRO CENTRAL */
 .elastic-band {
     width: 24px;
     background-color: #111;
@@ -61,9 +61,14 @@ body {
     flex-direction: column;
 }
 
-.logo-img {
-    width: calc(100% - 100px);
+.logo-link {
     margin: 0 50px 80px 50px;
+    display: block;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 100%;
     height: auto;
 }
 
@@ -72,7 +77,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    counter-reset: menu-index; /* Inicializa el contador en 0 */
+    counter-reset: menu-index; /* Inicia el conteo para que Proyectos sea 01 */
 }
 
 .navigation ul {
@@ -81,18 +86,14 @@ body {
 }
 
 .menu-spacer {
-    flex: 1; /* Empuja el bloque inferior al fondo */
+    flex: 1; /* Empuja los links de contacto/equipo hacia el fondo de la hoja */
 }
 
-/* 7. ESTILO DE LINKS Y NÚMEROS */
+/* 7. ESTILO DE LINKS Y NÚMEROS GIGANTES */
 .navigation li {
     margin-bottom: 22px;
     position: relative;
-}
-
-/* Solo sumamos al contador los ítems que NO sean 'inicio' */
-.navigation li:not(.nav-inicio) {
-    counter-increment: menu-index;
+    counter-increment: menu-index; /* Cada ítem suma 1 al número */
 }
 
 .navigation a {
@@ -106,13 +107,13 @@ body {
     height: 36px;
     position: relative;
     z-index: 10;
-    transition: 0.3s;
 }
 
-/* Configuración de los Números Grandes y Negrita */
+/* Números en Negrita y Grandes como la referencia */
 .navigation a::before {
-    font-size: 45px;
-    font-weight: bold;
+    content: "0" counter(menu-index);
+    font-size: 22px; /* Tamaño destacado */
+    font-weight: bold; /* Negrita absoluta */
     color: #ccc;
     margin-right: 30px;
     width: 40px;
@@ -120,34 +121,28 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Aplicamos el número al contenido, excepto en inicio */
-.navigation li:not(.nav-inicio) a::before {
-    content: "0" counter(menu-index);
-}
-
-/* 8. EL RECTÁNGULO NEGRO (DESTACADO FIJO) */
+/* 8. RECTÁNGULO NEGRO FIJO (PARA LA SECCIÓN PROYECTOS) */
 .destacado-fijo a {
-    color: #fff !important;
+    color: #fff !important; /* Texto blanco sobre fondo negro */
 }
 
 .destacado-fijo a::before {
-    color: #fff !important;
+    color: #fff !important; /* Número blanco sobre fondo negro */
 }
 
 .destacado-fijo::after {
     content: "";
     position: absolute;
-    /* Se extiende hasta el elástico */
-    right: -50px; 
+    right: -50px; /* Se extiende hasta tocar el elástico negro */
     left: -20px;
     top: -4px;
     bottom: -4px;
-    background-color: #1a1a1a;
+    background-color: #1a1a1a; /* El rectángulo negro de la referencia */
     z-index: 1;
-    border-radius: 4px 0 0 4px; /* Redondeado solo del lado izquierdo */
+    border-radius: 4px 0 0 4px; /* Redondeado solo del lado interno */
 }
 
-/* Hover sutil para el resto */
+/* Hover sutil para el resto de los links */
 .navigation li:not(.destacado-fijo) a:hover {
     color: #999;
 }
