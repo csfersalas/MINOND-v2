@@ -1,12 +1,8 @@
 /* 1. RESET Y BASE */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: #e8e8e8; /* Mesa gris clara que hace resaltar el cuaderno blanco */
+    background-color: #e8e8e8;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -15,20 +11,20 @@ body {
     overflow: hidden;
 }
 
-/* 2. EL CUADERNO (RECUADRO CON BORDES REDONDEADOS) */
+/* 2. EL CUADERNO */
 .notebook-container {
     display: flex;
     height: 94vh;
     width: 96vw;
     background-color: #fff;
-    border-radius: 12px; /* Bordes redondeados tipo Moleskine */
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.12); /* Sombra para dar profundidad */
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
     border: 1px solid #dcdcdc;
     position: relative;
 }
 
-/* 3. HOJA IZQUIERDA (ESPACIO DE CROQUIS) */
+/* 3. HOJA IZQUIERDA */
 .sketch-view {
     flex: 1.2;
     display: flex;
@@ -41,18 +37,16 @@ body {
 .main-sketch {
     max-width: 90%;
     max-height: 85vh;
-    object-fit: contain;
 }
 
-/* 4. ELÁSTICO NEGRO CENTRAL */
+/* 4. ELÁSTICO NEGRO */
 .elastic-band {
     width: 24px;
     background-color: #111;
     z-index: 20;
-    box-shadow: inset 2px 0 8px rgba(255,255,255,0.05);
 }
 
-/* 5. HOJA DERECHA (SIDEBAR) */
+/* 5. HOJA DERECHA */
 .sidebar {
     width: 400px;
     background-color: #fff;
@@ -77,7 +71,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    counter-reset: menu-index; /* Inicia el conteo para que Proyectos sea 01 */
+    counter-reset: menu-index; 
 }
 
 .navigation ul {
@@ -86,20 +80,20 @@ body {
 }
 
 .menu-spacer {
-    flex: 1; /* Empuja los links de contacto/equipo hacia el fondo de la hoja */
+    flex: 1;
 }
 
-/* 7. ESTILO DE LINKS Y NÚMEROS GIGANTES */
+/* 7. ESTILO DE LINKS Y NÚMEROS FINOS CON SERIF */
 .navigation li {
     margin-bottom: 22px;
     position: relative;
-    counter-increment: menu-index; /* Cada ítem suma 1 al número */
+    counter-increment: menu-index;
 }
 
 .navigation a {
     text-decoration: none;
     color: #333;
-    font-size: 19px;
+    font-size: 17px; /* Texto un poco más chico para que se vea fino */
     font-weight: 300;
     text-transform: lowercase;
     display: flex;
@@ -109,40 +103,60 @@ body {
     z-index: 10;
 }
 
-/* Números en Negrita y Grandes como la referencia */
+/* El Número: Más chico, Fino y con Serif */
 .navigation a::before {
     content: "0" counter(menu-index);
-    font-size: 22px; /* Tamaño destacado */
-    font-weight: bold; /* Negrita absoluta */
-    color: #ccc;
-    margin-right: 30px;
-    width: 40px;
+    font-family: 'Playfair Display', serif; /* Fuente con serif elegante */
+    font-size: 14px; /* Mucho más chico y sutil */
+    font-weight: 400;
+    color: #999;
+    margin-right: 25px;
+    width: 30px;
     display: inline-block;
-    font-family: Arial, sans-serif;
 }
 
-/* 8. RECTÁNGULO NEGRO FIJO (PARA LA SECCIÓN PROYECTOS) */
+/* 8. EL CIRCULITO (EL PUNTO) */
+/* Lo ponemos a la izquierda del número */
+.navigation a::after {
+    content: "•";
+    position: absolute;
+    left: -25px; /* Ajustalo según prefieras la distancia */
+    font-size: 18px;
+    color: #000;
+    opacity: 0; /* Por defecto invisible */
+    transition: opacity 0.3s;
+}
+
+/* 9. RECTÁNGULO NEGRO FIJO (PROYECTOS) */
 .destacado-fijo a {
-    color: #fff !important; /* Texto blanco sobre fondo negro */
+    color: #fff !important;
 }
 
 .destacado-fijo a::before {
-    color: #fff !important; /* Número blanco sobre fondo negro */
+    color: #fff !important;
 }
 
-.destacado-fijo::after {
+/* Mostramos el circulito solo en el destacado o en hover */
+.destacado-fijo a::after {
+    opacity: 1;
+    color: #fff; /* Blanco para que se vea sobre el negro */
+    left: -15px;
+}
+
+.destacado-fijo::before {
     content: "";
     position: absolute;
-    right: -50px; /* Se extiende hasta tocar el elástico negro */
+    right: -50px; 
     left: -20px;
-    top: -4px;
-    bottom: -4px;
-    background-color: #1a1a1a; /* El rectángulo negro de la referencia */
+    top: -2px;
+    bottom: -2px;
+    background-color: #1a1a1a;
     z-index: 1;
-    border-radius: 4px 0 0 4px; /* Redondeado solo del lado interno */
+    border-radius: 4px 0 0 4px;
 }
 
-/* Hover sutil para el resto de los links */
-.navigation li:not(.destacado-fijo) a:hover {
+/* Hover para los demás */
+.navigation li:not(.destacado-fijo) a:hover::after {
+    opacity: 1;
     color: #999;
 }
