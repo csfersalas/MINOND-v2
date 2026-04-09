@@ -1,58 +1,107 @@
-/* EL FONDO (LA MESA) */
-body { 
-    background-color: #f0f0f0; /* Un gris muy claro de fondo */
+/* 1. RESET GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. EL FONDO (LA MESA) */
+body {
+    background-color: #f0f0f0; 
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     overflow: hidden;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* EL CUADERNO (EL RECUADRO) */
-.notebook-container { 
-    display: flex; 
-    height: 92vh; /* No ocupa todo el alto, deja ver la "mesa" */
-    width: 96vw;  /* No ocupa todo el ancho */
-    background-color: #fff; 
-    border: 1px solid #d1d1d1; /* El borde fino que querías */
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08); /* Una sombra para que "flote" */
+/* 3. EL CUADERNO (EL RECUADRO) */
+.notebook-container {
+    display: flex;
+    height: 92vh; 
+    width: 94vw; 
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
     position: relative;
+    overflow: hidden; /* Para que nada se salga del borde */
 }
 
-/* ÁREA DEL CROQUIS */
-.sketch-view { 
-    flex: 1; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    background-color: #fafafa; /* Papel apenas distinto */
-    padding: 60px; 
+/* 4. ÁREA DEL CROQUIS (IZQUIERDA) */
+.sketch-view {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa; 
+    padding: 40px;
 }
 
-/* EL ELÁSTICO (Ahora queda dentro del recuadro) */
-.elastic-band { 
-    width: 20px; 
-    background-color: #1a1a1a; 
-    z-index: 10; 
+.main-sketch {
+    max-width: 90%;
+    max-height: 80vh;
+    height: auto;
+    object-fit: contain;
 }
 
-/* MENÚ LATERAL */
-.sidebar { 
-    width: 300px; 
-    background-color: #fff; 
-    padding: 60px 40px; 
+/* 5. EL ELÁSTICO */
+.elastic-band {
+    width: 20px;
+    background-color: #1a1a1a;
+    z-index: 10;
+    box-shadow: inset 2px 0 5px rgba(255,255,255,0.1);
 }
 
-/* NÚMEROS EN EL MENÚ (Como tu referencia) */
-.navigation li { 
-    margin-bottom: 15px; 
-    counter-increment: menu-counter; /* Esto genera números automáticos */
+/* 6. MENÚ LATERAL (DERECHA) */
+.sidebar {
+    width: 350px;
+    background-color: #fff;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+/* 7. NAVEGACIÓN Y NÚMEROS */
+.navigation {
+    counter-reset: menu-counter; /* Inicializa el contador */
+}
+
+.navigation ul {
+    list-style: none;
+}
+
+.navigation li {
+    margin-bottom: 18px;
+    counter-increment: menu-counter;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: lowercase;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
 }
 
 .navigation a::before {
-    content: "0" counter(menu-counter) " "; /* Pone el 01, 02... */
-    font-size: 12px;
-    margin-right: 15px;
-    color: #999;
-    font-family: Arial, sans-serif;
+    content: "0" counter(menu-counter); /* El 01, 02... */
+    font-size: 11px;
+    margin-right: 20px;
+    color: #aaa;
+    font-family: 'Courier New', Courier, monospace; /* Fuente técnica para el número */
+}
+
+.navigation a:hover {
+    opacity: 0.5;
 }
