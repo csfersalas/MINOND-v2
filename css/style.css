@@ -1,0 +1,91 @@
+/* 1. Reset general */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    height: 100vh; 
+    overflow: hidden; 
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+    background-color: #fff;
+}
+
+/* 2. Contenedor principal */
+.notebook-container { 
+    display: flex; 
+    height: 100vh; 
+    width: 100vw; 
+}
+
+/* 3. Área del croquis (Izquierda) */
+.sketch-view { 
+    flex: 1; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background-color: #fdfdfd; 
+    padding: 40px; 
+}
+
+.main-sketch { 
+    max-width: 85%; 
+    max-height: 85vh; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 4. El elástico (Centro) */
+.elastic-band { 
+    width: 22px; 
+    background-color: #111; 
+    z-index: 10; 
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.05) 50%, transparent 50%);
+    background-size: 3px;
+}
+
+/* 5. Menú lateral (Derecha) */
+.sidebar { 
+    width: 320px; 
+    background-color: #fff; 
+    padding: 60px 40px; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+/* Ajuste para el logo que subiste */
+.logo-img { 
+    width: 100%; 
+    height: auto; 
+    margin-bottom: 40px; 
+}
+
+.navigation ul { 
+    list-style: none; 
+}
+
+.navigation li { 
+    margin-bottom: 12px; 
+}
+
+.navigation a { 
+    text-decoration: none; 
+    color: #000; 
+    font-size: 18px; 
+    font-weight: 300; 
+    text-transform: lowercase; 
+    transition: opacity 0.3s;
+}
+
+.navigation a:hover { 
+    opacity: 0.4; 
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+    .notebook-container { flex-direction: column; overflow-y: auto; }
+    .sidebar { width: 100%; order: 1; padding: 30px; }
+    .sketch-view { order: 2; padding: 20px; }
+    .elastic-band { width: 100%; height: 10px; order: 1; }
+}
