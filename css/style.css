@@ -32,7 +32,7 @@ body {
 .sketch-view {
     flex: 1.2;
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     background-color: #fafafa;
     padding: 60px;
@@ -111,7 +111,7 @@ body {
 
 /* Configuración de los Números Grandes y Negrita */
 .navigation a::before {
-    font-size: 22px;
+    font-size: 45px;
     font-weight: bold;
     color: #ccc;
     margin-right: 30px;
