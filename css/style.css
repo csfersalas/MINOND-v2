@@ -1,133 +1,58 @@
-/* 1. RESET Y MESA */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background-color: #f5f5f5; /* Un gris muy tenue de fondo (mesa) */
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Usamos Helvética para el menú */
-    overflow: hidden;
-}
-
-/* 2. EL CUADERNO CON BORDES REDONDEADOS */
-.notebook-container {
-    display: flex;
-    height: 94vh; /* Casi todo el alto */
-    width: 96vw;  /* Casi todo el ancho */
-    background-color: #fff;
-    border-radius: 12px; /* Borde redondeado Moleskine */
-    overflow: hidden; /* Corta el contenido interno */
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1); /* Sombra suave para que flote */
-    border: 1px solid #e0e0e0; /* Un borde fino de encuadre */
-}
-
-/* 3. LADO IZQUIERDO (PAPEL CON TEXTURA) */
-.sketch-view {
-    flex: 1.2; /* Un poco más ancho para el dibujo */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fcfcfc; /* Papel casi blanco */
-    padding: 60px;
-}
-
-.main-sketch {
-    max-width: 90%;
-    max-height: 85vh;
-}
-
-/* 4. EL ELÁSTICO (Central) */
-.elastic-band {
-    width: 24px;
-    background-color: #111; /* Negro mate */
-    z-index: 20;
-    box-shadow: inset 3px 0 10px rgba(255,255,255,0.05); /* Un brillo sutil de textura */
-}
-
-/* 5. LADO DERECHO (MENÚ Y LOGO) */
-.sidebar {
-    width: 380px;
-    background-color: #fff;
-    padding: 80px 0; /* Sin padding lateral para que las pestañas toquen el elástico */
-    display: flex;
-    flex-direction: column;
-}
-
-.logo-img {
-    width: calc(100% - 100px); /* Ajuste del logo para que respete aire lateral */
-    margin: 0 50px 70px 50px; /* Centrado lateral con margen inferior */
-}
-
-/* 6. NAVEGACIÓN Y DISTRIBUCIÓN */
+/* Reiniciamos el contador general */
 .navigation {
-    flex: 1; /* Ocupa el resto del espacio vertical */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Empuja el segundo bloque al fondo */
-    padding: 0 50px; /* Recuperamos el padding lateral para el menú */
-    counter-reset: menu-index; /* Inicia contador para números */
+    counter-reset: menu-index 0; 
 }
 
-.menu-spacer {
-    flex: 1; /* Crea un hueco vertical enorme */
+/* Evitamos que 'inicio' sume al contador si queremos que Proyectos sea el 01 */
+.main-links li:first-child {
+    counter-increment: none;
 }
 
-/* Estilo para todas las listas */
-.navigation ul { list-style: none; margin: 0; padding: 0; }
-
-/* 7. ESTILO DE CADA LINK (Texto grande y jerárquico) */
-.navigation li {
-    margin-bottom: 20px; /* Más aire entre links */
-    position: relative; /* Para ubicar la pestaña negra */
+.main-links li:first-child a::before {
+    content: ""; /* O podés ponerle 00 si preferís */
+    margin-right: 0;
 }
 
-.navigation a {
-    text-decoration: none;
-    color: #333;
-    font-size: 19px; /* Aumentamos tamaño del texto */
-    font-weight: 300; /* Helvética Light para el texto */
-    text-transform: lowercase; /* Mantenemos tu estética de minúsculas */
-    display: flex;
-    align-items: center;
-    transition: color 0.3s;
-    height: 30px; /* Un alto fijo para que el recuadro negro calce perfecto */
+/* El resto de los ítems sí cuentan, empezando por Proyectos */
+.item-proyectos, .secundary-links li {
+    counter-increment: menu-index;
 }
 
-/* EL NÚMERO GIGANTE Y NEGRITA (::before) */
-.navigation a::before {
-    content: "0" counter(menu-index);
-    font-size: 20px; /* Números más grandes */
-    font-weight: bold; /* Números en negrita, como la referencia */
-    color: #bbb; /* Color gris suave */
-    margin-right: 30px; /* Más aire entre número y texto */
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Usamos la misma fuente */
+/* Estilo para el rectángulo negro FIJO en Proyectos */
+.destacado-fijo a {
+    color: #fff !important;
+    position: relative;
+    z-index: 5;
 }
 
-/* 8. EL DESTACADO (Pestaña Negra detras del texto) */
-/* Aplicamos este efecto a la clase "active-item" o al hover */
-.navigation .active-item a::after, 
-.navigation li:hover a::after {
+.destacado-fijo a::before {
+    color: #fff !important;
+}
+
+.destacado-fijo::after {
     content: "";
     position: absolute;
-    right: -50px; /* Se extiende hacia la derecha hasta tocar el elástico */
-    left: -20px; /* Un poco a la izquierda para cubrir el número */
+    right: -50px; /* Se pega al elástico */
+    left: -20px;
     top: -5px;
     bottom: -5px;
-    background-color: #1a1a1a; /* El rectángulo negro de la referencia */
-    z-index: -1; /* Se pone DETRÁS del texto */
-    border-radius: 4px; /* Un toque redondeado suave */
-    opacity: 1;
+    background-color: #1a1a1a; /* Negro sólido */
+    z-index: 1; 
+    border-radius: 4px;
 }
 
-/* Cambiamos color de texto y número cuando está activo/hover */
-.navigation .active-item a, 
-.navigation li:hover a {
-    color: #fff !important; /* Texto blanco sobre fondo negro */
+/* Ajuste de los números grandes y negrita como pediste */
+.navigation a::before {
+    content: "0" counter(menu-index);
+    font-size: 22px; /* Más grandes */
+    font-weight: bold; /* Negrita total */
+    color: #bbb;
+    margin-right: 25px;
+    display: inline-block;
+    width: 40px;
 }
 
-.navigation .active-item a::before, 
-.navigation li:hover a::before {
-    color: #fff !important; /* Número blanco sobre fondo negro */
+/* El resto de los links (equipo, contacto, etc.) sin fondo negro */
+.secundary-links a {
+    color: #333;
 }
