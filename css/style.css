@@ -1,107 +1,108 @@
-/* 1. RESET GENERAL */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* 1. RESET Y MESA */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* 2. EL FONDO (LA MESA) */
 body {
-    background-color: #f0f0f0; 
+    background-color: #e0e0e0; /* El fondo gris de la mesa */
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    overflow: hidden;
     font-family: 'Helvetica Neue', Arial, sans-serif;
+    overflow: hidden;
 }
 
-/* 3. EL CUADERNO (EL RECUADRO) */
+/* 2. EL CUADERNO CON BORDES REDONDEADOS */
 .notebook-container {
     display: flex;
-    height: 92vh; 
+    height: 90vh; 
     width: 94vw; 
     background-color: #fff;
+    border-radius: 12px; /* Bordes redondeados del cuaderno */
+    overflow: hidden; /* Corta el contenido para que respete el borde */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15); /* Sombra para que flote */
     border: 1px solid #d1d1d1;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-    position: relative;
-    overflow: hidden; /* Para que nada se salga del borde */
 }
 
-/* 4. ÁREA DEL CROQUIS (IZQUIERDA) */
+/* 3. LADO IZQUIERDO (DIBUJO) */
 .sketch-view {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fafafa; 
-    padding: 40px;
+    background-color: #fcfcfc;
+    padding: 50px;
 }
 
 .main-sketch {
     max-width: 90%;
     max-height: 80vh;
-    height: auto;
-    object-fit: contain;
+    border-radius: 4px; /* Un toque sutil al dibujo */
 }
 
-/* 5. EL ELÁSTICO */
+/* 4. ELÁSTICO */
 .elastic-band {
-    width: 20px;
-    background-color: #1a1a1a;
+    width: 24px;
+    background-color: #111;
     z-index: 10;
-    box-shadow: inset 2px 0 5px rgba(255,255,255,0.1);
 }
 
-/* 6. MENÚ LATERAL (DERECHA) */
+/* 5. LADO DERECHO (MENÚ) */
 .sidebar {
-    width: 350px;
+    width: 380px;
     background-color: #fff;
-    padding: 60px 40px;
+    padding: 70px 50px;
     display: flex;
     flex-direction: column;
 }
 
 .logo-img {
     width: 100%;
-    max-width: 250px;
-    height: auto;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
-/* 7. NAVEGACIÓN Y NÚMEROS */
+/* 6. NAVEGACIÓN CON NÚMEROS DESTACADOS */
 .navigation {
-    counter-reset: menu-counter; /* Inicializa el contador */
+    counter-reset: menu-index; /* Inicia el contador de números */
 }
 
-.navigation ul {
-    list-style: none;
-}
+.navigation ul { list-style: none; }
 
 .navigation li {
-    margin-bottom: 18px;
-    counter-increment: menu-counter;
+    margin-bottom: 25px;
+    counter-increment: menu-index;
+    position: relative;
 }
 
 .navigation a {
     text-decoration: none;
-    color: #333;
-    font-size: 16px;
+    color: #000;
+    font-size: 17px;
     font-weight: 300;
     text-transform: lowercase;
-    transition: opacity 0.3s;
     display: flex;
     align-items: center;
+    transition: 0.3s;
 }
 
+/* El número a la izquierda */
 .navigation a::before {
-    content: "0" counter(menu-counter); /* El 01, 02... */
-    font-size: 11px;
-    margin-right: 20px;
-    color: #aaa;
-    font-family: 'Courier New', Courier, monospace; /* Fuente técnica para el número */
+    content: "0" counter(menu-index);
+    font-size: 12px;
+    color: #bbb;
+    margin-right: 25px;
+    font-family: 'Courier New', monospace;
+}
+
+/* El punto de destaque para la página activa o hover */
+.navigation a.active::after, 
+.navigation a:hover::after {
+    content: "•";
+    position: absolute;
+    left: -20px; /* Se asoma al borde */
+    color: #000;
+    font-size: 20px;
 }
 
 .navigation a:hover {
-    opacity: 0.5;
+    color: #999;
 }
