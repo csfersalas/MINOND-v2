@@ -1,91 +1,58 @@
-/* 1. Reset general */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
-
+/* EL FONDO (LA MESA) */
 body { 
-    height: 100vh; 
-    overflow: hidden; 
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-    background-color: #fff;
+    background-color: #f0f0f0; /* Un gris muy claro de fondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* 2. Contenedor principal */
+/* EL CUADERNO (EL RECUADRO) */
 .notebook-container { 
     display: flex; 
-    height: 100vh; 
-    width: 100vw; 
+    height: 92vh; /* No ocupa todo el alto, deja ver la "mesa" */
+    width: 96vw;  /* No ocupa todo el ancho */
+    background-color: #fff; 
+    border: 1px solid #d1d1d1; /* El borde fino que querías */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08); /* Una sombra para que "flote" */
+    position: relative;
 }
 
-/* 3. Área del croquis (Izquierda) */
+/* ÁREA DEL CROQUIS */
 .sketch-view { 
     flex: 1; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    background-color: #fdfdfd; 
-    padding: 40px; 
+    background-color: #fafafa; /* Papel apenas distinto */
+    padding: 60px; 
 }
 
-.main-sketch { 
-    max-width: 85%; 
-    max-height: 85vh; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-/* 4. El elástico (Centro) */
+/* EL ELÁSTICO (Ahora queda dentro del recuadro) */
 .elastic-band { 
-    width: 22px; 
-    background-color: #111; 
+    width: 20px; 
+    background-color: #1a1a1a; 
     z-index: 10; 
-    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-    background-image: linear-gradient(90deg, rgba(255,255,255,0.05) 50%, transparent 50%);
-    background-size: 3px;
 }
 
-/* 5. Menú lateral (Derecha) */
+/* MENÚ LATERAL */
 .sidebar { 
-    width: 320px; 
+    width: 300px; 
     background-color: #fff; 
     padding: 60px 40px; 
-    display: flex; 
-    flex-direction: column; 
 }
 
-/* Ajuste para el logo que subiste */
-.logo-img { 
-    width: 100%; 
-    height: auto; 
-    margin-bottom: 40px; 
-}
-
-.navigation ul { 
-    list-style: none; 
-}
-
+/* NÚMEROS EN EL MENÚ (Como tu referencia) */
 .navigation li { 
-    margin-bottom: 12px; 
+    margin-bottom: 15px; 
+    counter-increment: menu-counter; /* Esto genera números automáticos */
 }
 
-.navigation a { 
-    text-decoration: none; 
-    color: #000; 
-    font-size: 18px; 
-    font-weight: 300; 
-    text-transform: lowercase; 
-    transition: opacity 0.3s;
-}
-
-.navigation a:hover { 
-    opacity: 0.4; 
-}
-
-/* Responsivo para celulares */
-@media (max-width: 768px) {
-    .notebook-container { flex-direction: column; overflow-y: auto; }
-    .sidebar { width: 100%; order: 1; padding: 30px; }
-    .sketch-view { order: 2; padding: 20px; }
-    .elastic-band { width: 100%; height: 10px; order: 1; }
+.navigation a::before {
+    content: "0" counter(menu-counter) " "; /* Pone el 01, 02... */
+    font-size: 12px;
+    margin-right: 15px;
+    color: #999;
+    font-family: Arial, sans-serif;
 }
