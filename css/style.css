@@ -55,9 +55,9 @@ body {
 
 /* Coordenadas según tu croquis */
 .cuadro-1 { top: 5%; left: 35%; }
-.cuadro-2 { top: 15%; right: 10%; }
+.cuadro-2 { top: 0%; right: 0%; }
 .cuadro-3 { top: 100%; right: 15%; }
-.cuadro-4 { bottom: 15%; left: 40%; }
+.cuadro-4 { bottom: 0%; left: 0%; }
 
 /* --- ELÁSTICO --- */
 .elastic-band {
