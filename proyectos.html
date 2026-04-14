@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINOND | Proyectos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="notebook-container">
+        
+        <main class="sketch-view" id="scrapbook-canvas">
+            
+            <div class="canvas-logo">
+                <h1>MINOND</h1>
+                <p>ESTUDIO</p>
+            </div>
+
+            <a href="p-urbana-1.html" class="scrapbook-item item-1" data-category="infraestructura-urbana">
+                <img src="img/proyectos/urbana_1.jpg" alt="Obra Urbana">
+            </a>
+
+            <a href="p-individual-1.html" class="scrapbook-item item-2" data-category="vivienda-individual">
+                <img src="img/proyectos/individual_1.jpg" alt="Vivienda Individual">
+            </a>
+
+            <a href="p-colectiva-1.html" class="scrapbook-item item-3" data-category="vivienda-colectiva">
+                <img src="img/proyectos/colectiva_1.jpg" alt="Vivienda Colectiva">
+            </a>
+
+            <a href="p-pabellon-1.html" class="scrapbook-item item-4" data-category="pabellones-intervenciones">
+                <img src="img/proyectos/pabellon_1.jpg" alt="Pabellón">
+            </a>
+
+            </main>
+
+        <div class="elastic-band"></div>
+
+       <aside class="sidebar">
+    <a href="index.html" class="logo-container">
+        <img src="img/00_generales/logo_MINOND-estudio-2021.jpg" alt="Logo MINOND ESTUDIO" class="sidebar-logo">
+    </a>
+
+    <nav class="navigation">
+        <ul>
+            <li class="active-item">
+                <a href="proyectos.html">proyectos</a>
+                
+                <ul class="sub-menu">
+                    <li><a href="#" class="filter-btn active-filter" data-filter="all">todos</a></li>
+                    <li><a href="#" class="filter-btn" data-filter="infraestructura-urbana">infraestructura urbana</a></li>
+                    <li><a href="#" class="filter-btn" data-filter="vivienda-individual">vivienda individual</a></li>
+                    <li><a href="#" class="filter-btn" data-filter="vivienda-colectiva">vivienda colectiva</a></li>
+                    <li><a href="#" class="filter-btn" data-filter="pabellones-intervenciones">pabellones e intervenciones</a></li>
+                </ul>
+            </li>
+            <li><a href="equipo.html">equipo</a></li>
+            <li><a href="croquis.html">colección de croquis</a></li>
+            <li><a href="publicaciones.html">publicaciones</a></li>
+            <li><a href="contacto.html">contacto</a></li>
+        </ul>
+    </nav>
+</aside>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('scrapbook-canvas');
+        const buttons = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.scrapbook-item');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const filter = btn.getAttribute('data-filter');
+
+                // 1. Estilo del botón activo
+                buttons.forEach(b => b.classList.remove('active-filter'));
+                btn.classList.add('active-filter');
+
+                // 2. Activar/Desactivar modo centrado
+                if (filter === 'all') {
+                    canvas.classList.remove('is-filtered');
+                } else {
+                    canvas.classList.add('is-filtered');
+                }
+
+                // 3. Filtrar imágenes
+                items.forEach(item => {
+                    const cat = item.getAttribute('data-category');
+                    if (filter === 'all' || cat === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.style.opacity = '1', 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
