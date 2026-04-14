@@ -54,10 +54,10 @@ body {
 }
 
 /* Coordenadas según tu croquis */
-.cuadro-1 { top: 10%; left: 15%; }
-.cuadro-2 { top: 15%; right: 10%; }
-.cuadro-3 { top: 60%; right: 15%; }
-.cuadro-4 { bottom: 10%; left: 20%; }
+.cuadro-1 { top: 5%; left: 5%; }
+.cuadro-2 { top: 30%; right: 40%; }
+.cuadro-3 { top: 20%; right: 10%; }
+.cuadro-4 { bottom: 15%; right: 5%; }
 
 /* --- ELÁSTICO --- */
 .elastic-band {
