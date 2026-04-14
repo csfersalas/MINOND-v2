@@ -116,10 +116,10 @@ body {
 }
 
 /* Posiciones de la "Constelación" (ejemplos iniciales) */
-.item-1 { width: 18%; top: 5%; left: 4%;}
-.item-2 { width: 20%; top: 28%; left: 38%;}
-.item-3 { width: 19%; top: 12%; right: 8%; }
-.item-4 { width: 19%; bottom: 14%; right: 6%;}
+.item-1 { width: 25%; top: 5%; left: 4%;}
+.item-2 { width: 25%; top: 28%; left: 38%;}
+.item-3 { width: 30%; top: 12%; right: 8%; }
+.item-4 { width: 30%; bottom: 14%; right: 6%;}
 
 /* ==========================================================
    IMPORTANTE: REESTABLECIMIENTO (Si venías usando filtros)
@@ -175,7 +175,6 @@ body {
     right: auto;
     bottom: auto;
     transform: none;
-    width: clamp(200px, 28%, 320px);
 }
 
 /* ==========================================================
