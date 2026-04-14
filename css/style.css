@@ -104,24 +104,23 @@ body {
     font-size: 15px;
     font-weight: 300;
     text-transform: lowercase;
-    display: flex;
-    align-items: center;
+    display: block; 
+    margin-bottom: 5px;
 }
 
 .navigation a::before {
     content: "0" counter(menu-index);
-    font-family: 'Open Sans', sans-serif; 
-    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px; 
     color: #aaa;
-    margin-right: 15px;
-    width: 25px;
-    display: inline-block;
+    display: block; 
+    margin-bottom: 2px; 
 }
 
 .navigation a::after {
     content: "•";
     position: absolute;
-    left: -15px;
+    left: -10 px;
     font-size: 16px;
     color: #000;
     opacity: 0;
