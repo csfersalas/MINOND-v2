@@ -110,23 +110,20 @@ body {
     position: relative; 
     
     /* TAMAÑO: Ajustá este % para que sea tan chico como quieras */
-    width: 40%;               /* <--- ESTE ES EL CONTROL DE TAMAÑO */
-    max-width: 500px;         /* Un tope para pantallas muy grandes */
+    width: 80%;               /* <--- ESTE ES EL CONTROL DE TAMAÑO */
+    max-width: 850px;         /* Un tope para pantallas muy grandes */
     height: auto;             /* Mantiene la proporción */
     
     object-fit: contain;      /* Muestra la imagen entera sin recortar */
     
     /* ESTILO: Un toque sutil */
     opacity: 0.8;             /* Un poco transparente para que sea sutil */
-    filter: grayscale(20%);   /* Casi blanco y negro, con un toque de color */
     
     z-index: 5;
     
     /* Eliminamos las coordenadas fijas antiguas */
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
+    top: 15%;
+    left: 60%;
 }
 
 /* ----------------------------------------------------------
