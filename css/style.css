@@ -2,7 +2,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: #e8e8e8;
+    background-color: #e8e8e8; /* Mesa gris clara */
     height: 100vh;
     display: flex;
     align-items: center;
@@ -11,7 +11,7 @@ body {
     overflow: hidden;
 }
 
-/* 2. EL CUADERNO */
+/* 2. EL CUADERNO (RECUADRO) */
 .notebook-container {
     display: flex;
     height: 94vh;
@@ -24,39 +24,92 @@ body {
     position: relative;
 }
 
-/* 3. HOJA IZQUIERDA */
+/* 3. HOJA IZQUIERDA (DIBUJO Y OVERLAYS) */
 .sketch-view {
-    flex: 1.2;
+    /* Mantenemos el crecimiento flex pero ahora sidebar es menor */
+    flex: 1; 
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #fafafa;
     padding: 60px;
+    position: relative; /* Importante para posicionar overlays dentro */
+    overflow: hidden;
 }
 
-.main-sketch {
-    max-width: 90%;
-    max-height: 85vh;
+/* El dibujo principal de fondo ocupando el contenedor */
+.main-sketch-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Mantiene proporciones sin cortar */
+    opacity: 1; /* Dibujo de fondo sutil si se desea (ej: 0.6) */
 }
 
-/* 4. ELÁSTICO NEGRO */
+/* 4. NOVEDAD: EL LOGO GRANDE (Zona Roja) */
+.large-logo-overlay {
+    position: absolute;
+    /* Ajusta estos valores según la zona roja de tu dibujo */
+    left: 10%; 
+    top: 35%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Mismo sans que el logo real */
+    font-size: 10vw; /* Tamaño responsivo enorme */
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 1;
+    z-index: 10;
+}
+
+/* 5. NOVEDAD: LA GRILLA DE PLACEHOLDERS (Zona Azul) */
+.placeholder-grid-overlay {
+    position: absolute;
+    /* Ajusta estos valores para colocar la grilla en la zona azul */
+    right: 5%;
+    bottom: 5%;
+    width: 30%; /* Ancho de la zona de grilla */
+    height: auto;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Grilla de 2 columnas */
+    gap: 15px; /* Espacio entre cuadraditos */
+}
+
+.grid-item-placeholder {
+    width: 100%;
+    aspect-ratio: 1; /* Fuerza a que sean cuadrados */
+    border: 1px solid #dcdcdc; /* Un borde sutil */
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Pequeña sombra de papel */
+}
+
+.grid-item-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La imagen placeholder se estira y corta para llenar el cuadrado */
+    opacity: 0.8; /* Ligeramente opacos para que se vea que son placeholders */
+}
+
+/* 6. ELÁSTICO */
 .elastic-band {
     width: 24px;
     background-color: #111;
     z-index: 20;
 }
 
-/* 5. HOJA DERECHA */
+/* 7. HOJA DERECHA (SIDEBAR REDUCIDA) */
 .sidebar {
-    width: 400px;
+    /* ANCHO MUCHO MÁS CHICO EN PORCENTAJE (EJ: 18%) */
+    width: 18%; 
     background-color: #fff;
     padding: 80px 0;
     display: flex;
     flex-direction: column;
+    min-width: 200px; /* Para que no se rompa en pantallas chicas */
 }
 
 .logo-link {
-    margin: 0 50px 80px 50px;
+    margin: 0 20px 80px 20px; /* Reducido margen lateral */
     display: block;
     text-decoration: none;
 }
@@ -66,7 +119,7 @@ body {
     height: auto;
 }
 
-/* 6. NAVEGACIÓN Y CONTADORES */
+/* 8. NAVEGACIÓN Y CONTADORES (Se mantienen finos) */
 .navigation {
     flex: 1;
     display: flex;
@@ -76,16 +129,15 @@ body {
 
 .navigation ul {
     list-style: none;
-    padding: 0 50px;
+    padding: 0 20px; /* Reducido padding lateral */
 }
 
 .menu-spacer {
     flex: 1;
 }
 
-/* 7. ESTILO DE LINKS Y NÚMEROS FINOS CON SERIF */
 .navigation li {
-    margin-bottom: 22px;
+    margin-bottom: 18px; /* Menor margen entre links */
     position: relative;
     counter-increment: menu-index;
 }
@@ -93,37 +145,35 @@ body {
 .navigation a {
     text-decoration: none;
     color: #333;
-    font-size: 17px; /* Texto un poco más chico para que se vea fino */
+    font-size: 15px; /* Texto un poco más chico para un menú más fino */
     font-weight: 300;
     text-transform: lowercase;
     display: flex;
     align-items: center;
-    height: 36px;
+    height: 32px;
     position: relative;
     z-index: 10;
 }
 
-/* El Número: Más chico, Fino y con Serif */
 .navigation a::before {
     content: "0" counter(menu-index);
-    font-family: 'Playfair Display', serif; /* Fuente con serif elegante */
-    font-size: 14px; /* Mucho más chico y sutil */
+    font-family: 'Playfair Display', serif;
+    font-size: 12px; /* Más chico y sutil */
     font-weight: 400;
     color: #999;
-    margin-right: 25px;
-    width: 30px;
+    margin-right: 15px; /* Menor margen */
+    width: 25px; /* Menor ancho */
     display: inline-block;
 }
 
-/* 8. EL CIRCULITO (EL PUNTO) */
-/* Lo ponemos a la izquierda del número */
+/* Recuperamos el punto (el circulito) que te gustaba */
 .navigation a::after {
     content: "•";
     position: absolute;
-    left: -25px; /* Ajustalo según prefieras la distancia */
-    font-size: 18px;
+    left: -20px;
+    font-size: 16px;
     color: #000;
-    opacity: 0; /* Por defecto invisible */
+    opacity: 0;
     transition: opacity 0.3s;
 }
 
@@ -136,18 +186,17 @@ body {
     color: #fff !important;
 }
 
-/* Mostramos el circulito solo en el destacado o en hover */
 .destacado-fijo a::after {
     opacity: 1;
-    color: #fff; /* Blanco para que se vea sobre el negro */
-    left: -15px;
+    color: #fff;
+    left: -12px;
 }
 
 .destacado-fijo::before {
     content: "";
     position: absolute;
-    right: -50px; 
-    left: -20px;
+    right: -20px; /* Se pega al elástico, ajustado por menor padding */
+    left: -15px;
     top: -2px;
     bottom: -2px;
     background-color: #1a1a1a;
@@ -155,7 +204,6 @@ body {
     border-radius: 4px 0 0 4px;
 }
 
-/* Hover para los demás */
 .navigation li:not(.destacado-fijo) a:hover::after {
     opacity: 1;
     color: #999;
