@@ -152,32 +152,29 @@ body {
 /* ==========================================================
    5. SIDEBAR
    ========================================================== */
-.sidebar {
-    width: var(--ancho-sidebar);
-    flex-shrink: 0;
-    background-color: var(--color-blanco);
-    padding: 60px 0;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Logo en sidebar (solo en proyectos.html) */
+/* Reservamos un espacio fijo para el logo en TODAS las páginas */
 .logo-container {
     display: block;
-    padding: 0 25px;
-    margin-bottom: 50px;
-}
-
-.sidebar-logo {
     width: 100%;
-    height: auto;
-    display: block;
-    filter: grayscale(100%);
-    transition: filter var(--transicion-rapida);
+    padding: 0 25px;
+    height: 120px; /* <--- AJUSTA ESTE VALOR: Es el espacio vertical total que ocupa el logo + margen */
+    display: flex;
+    align-items: center; /* Centra el logo verticalmente en ese espacio */
+    margin-bottom: 30px; /* Espacio extra debajo del bloque del logo */
 }
 
-.sidebar-logo:hover {
-    filter: grayscale(0%);
+/* Si en una página no querés logo, el contenedor sigue ahí pero vacío, 
+   manteniendo el menú en su lugar */
+.logo-container:empty {
+    display: none; /* Opcional: si realmente no hay logo, que colapse */
+}
+
+/* Forzamos que la navegación no tenga márgenes superiores extra */
+.navigation {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
 }
 
 /* ==========================================================
