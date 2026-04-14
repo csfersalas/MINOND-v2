@@ -137,3 +137,32 @@ body {
     opacity: 1;
     color: #ccc;
 }
+/* --- LOGO EN SIDEBAR --- */
+.logo-container {
+    display: block;
+    width: 100%;
+    padding: 0 25px; /* Alineado con el margen del menú */
+    margin-bottom: 50px; /* Espacio antes de que empiece el menú 01 */
+}
+
+.sidebar-logo {
+    width: 100%; /* Ocupa el ancho del contenedor con el padding */
+    height: auto;
+    display: block;
+    filter: grayscale(100%); /* Opcional: para que sea más minimalista */
+    transition: filter 0.3s ease;
+}
+
+.sidebar-logo:hover {
+    filter: grayscale(0%); /* El logo recupera su color al pasar el mouse */
+}
+
+/* Ajuste fino del sidebar para que el logo y el menú respiren */
+.sidebar {
+    width: 15%;
+    min-width: 220px;
+    background-color: #fff;
+    padding: 60px 0; /* Espaciado superior e inferior */
+    display: flex;
+    flex-direction: column;
+}
