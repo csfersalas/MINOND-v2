@@ -91,16 +91,13 @@ body {
    ---------------------------------------------------------- */
 .cuadro-azul {
     position: absolute;
-    width: 18%;
+    width: 40%;
     height: auto;
     object-fit: cover;
     z-index: 5;
 }
 
-.cuadro-1 { top:  5%; left:  4%; }
-.cuadro-2 { top: 28%; left: 38%; }
-.cuadro-3 { top: 12%; right:  8%; }
-.cuadro-4 { bottom: 14%; right:  6%; }
+.cuadro-1 { top:  5%; right:  4%; }
 
 /* ----------------------------------------------------------
    Imágenes sueltas de PROYECTOS (.scrapbook-item + .item-N)
