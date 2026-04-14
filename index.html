@@ -19,8 +19,11 @@
             
             <img src="img/00_generales/logo_MINOND-estudio-2021.jpg" alt="Logo Minond" class="logo-zona-roja">
 
-            <img src="img/00_generales/CM-026.09.jpg" alt="Croquis 1" class="cuadro-azul cuadro-1">
-
+    <div class="scrapbook-item item-1"><img src="img/00_generales/CM-026.09.jpg" alt="Obra 1"></div>
+    <div class="scrapbook-item item-2"><img src="img/00_generales/CM-027.14-01.jpg" alt="Obra 2"></div>
+    <div class="scrapbook-item item-3"><img src="img/00_generales/CM-027.14-01.jpg" alt="Obra 3"></div>
+    <div class="scrapbook-item item-4"><img src="img/00_generales/CM-027.14-01.jpg" alt="Obra 4"></div>
+</main>
         </main>
 
         <div class="elastic-band"></div>
@@ -43,6 +46,38 @@
 </aside>
 
     </div>
+<script>
+    const items = document.querySelectorAll('.scrapbook-item');
 
+    items.forEach(item => {
+        item.addEventListener('mousedown', startDragging);
+    });
+
+    function startDragging(e) {
+        const item = e.currentTarget;
+        let shiftX = e.clientX - item.getBoundingClientRect().left;
+        let shiftY = e.clientY - item.getBoundingClientRect().top;
+
+        function moveAt(pageX, pageY) {
+            item.style.left = (pageX - shiftX) + 'px';
+            item.style.top = (pageY - shiftY) + 'px';
+        }
+
+        function onMouseMove(e) {
+            moveAt(e.pageX, e.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        document.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            document.onmouseup = null;
+        };
+        
+        // Evitar que el navegador intente arrastrar la imagen por defecto
+        item.ondragstart = function() { return false; };
+    }
+</script>
 </body>
+    
 </html>
