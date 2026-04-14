@@ -153,20 +153,20 @@ body {
    5. SIDEBAR
    ========================================================== */
 /* Reservamos un espacio fijo para el logo en TODAS las páginas */
-.logo-container {
-    display: block;
+.logo-box {
     width: 100%;
     padding: 0 25px;
-    height: 120px; /* <--- AJUSTA ESTE VALOR: Es el espacio vertical total que ocupa el logo + margen */
+    height: 120px; 
     display: flex;
-    align-items: center; /* Centra el logo verticalmente en ese espacio */
-    margin-bottom: 30px; /* Espacio extra debajo del bloque del logo */
+    align-items: center;
+    margin-bottom: 30px;
+    overflow: hidden; /* Esto evita que una imagen gigante se salga */
 }
 
-/* Si en una página no querés logo, el contenedor sigue ahí pero vacío, 
-   manteniendo el menú en su lugar */
-.logo-container:empty {
-    display: none; /* Opcional: si realmente no hay logo, que colapse */
+.sidebar-logo {
+    max-width: 100%; /* El logo nunca será más ancho que el sidebar */
+    height: auto;
+    display: block;
 }
 
 /* Forzamos que la navegación no tenga márgenes superiores extra */
