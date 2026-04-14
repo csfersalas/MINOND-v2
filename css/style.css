@@ -45,7 +45,7 @@ body {
 /* ZONAS AZULES: CUADROS IRREGULARES */
 .cuadro-azul {
     position: absolute;
-    width: 60%;
+    width: 5%;
     aspect-ratio: 1;
     object-fit: cover;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
@@ -68,7 +68,7 @@ body {
 
 /* --- HOJA DERECHA: SIDEBAR --- */
 .sidebar {
-    width: 15%;
+    width: 12%;
     min-width: 80px;
     background-color: #fff;
     padding: 80px 0;
