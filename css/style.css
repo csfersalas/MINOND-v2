@@ -45,9 +45,9 @@ body {
 /* ZONAS AZULES: CUADROS IRREGULARES */
 .cuadro-azul {
     position: absolute;
-    width: 15%;
-    aspect-ratio: 1;
-    object-fit: cover;
+    width: 15%; /* Esto define qué tan ancho es el cuadro */
+    height: auto; /* IMPORTANTE: Esto permite que la altura se ajuste sola */
+    object-fit: contain; /* Asegura que se vea toda la imagen sin cortar partes */
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     z-index: 5;
     background-color: #f5f5f5;
@@ -56,7 +56,7 @@ body {
 /* Coordenadas según tu croquis */
 .cuadro-1 { top: 5%; left: 5%; }
 .cuadro-2 { top: 30%; right: 40%; }
-.cuadro-3 { top: 20%; right: 10%; }
+.cuadro-3 { top: 15%; right: 10%; }
 .cuadro-4 { bottom: 15%; right: 5%; }
 
 /* --- ELÁSTICO --- */
