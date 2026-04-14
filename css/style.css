@@ -1,4 +1,6 @@
-/* --- CONFIGURACIÓN BASE --- */
+/* ==========================================================
+   1. CONFIGURACIÓN BASE Y RESET
+   ========================================================== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -7,75 +9,96 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Open Sans', sans-serif; 
+    font-family: 'Open Sans', sans-serif;
     overflow: hidden;
 }
 
-/* --- ESTRUCTURA DEL CUADERNO --- */
+/* ==========================================================
+   2. ESTRUCTURA DEL CUADERNO (Contenedor principal)
+   ========================================================== */
 .notebook-container {
     display: flex;
     height: 94vh;
     width: 96vw;
     background-color: #fff;
     border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
     border: 1px solid #dcdcdc;
-    position: relative;
-}
-
-/* --- HOJA IZQUIERDA: LIENZO BLANCO --- */
-.sketch-view {
-    flex: 1; 
-    background-color: #ffffff;
-    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
     overflow: hidden;
+    position: relative;
 }
 
-/* ZONA ROJA: LOGO */
-.logo-zona-roja {
-    position: absolute;
-    top: 60%;
-    left: 2%;
-    width: 45%;
-    height: auto;
-    z-index: 10;
-}
-
-/* ZONAS AZULES: CUADROS IRREGULARES */
-.cuadro-azul {
-    position: absolute;
-    width: 15%; /* Esto define qué tan ancho es el cuadro */
-    height: auto; /* IMPORTANTE: Esto permite que la altura se ajuste sola */
-    object-fit: contain; /* Asegura que se vea toda la imagen sin cortar partes */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    z-index: 5;
-    background-color: #f5f5f5;
-}
-
-/* Coordenadas según tu croquis */
-.cuadro-1 { top: 5%; left: 5%; }
-.cuadro-2 { top: 30%; right: 40%; }
-.cuadro-3 { top: 15%; right: 10%; }
-.cuadro-4 { bottom: 15%; right: 5%; }
-
-/* --- ELÁSTICO --- */
 .elastic-band {
     width: 24px;
     background-color: #111;
     z-index: 20;
 }
 
-/* --- HOJA DERECHA: SIDEBAR --- */
+/* ==========================================================
+   3. HOJA IZQUIERDA (Lienzo / Scrapbook)
+   ========================================================== */
+.sketch-view {
+    flex: 1;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-zona-roja {
+    position: absolute;
+    top: 60%;
+    left: 2%;
+    width: 45%;
+    z-index: 10;
+}
+
+.cuadro-azul {
+    position: absolute;
+    width: 15%;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    background-color: #f5f5f5;
+    z-index: 5;
+}
+
+/* Coordenadas */
+.cuadro-1 { top: 5%; left: 5%; }
+.cuadro-2 { top: 30%; right: 40%; }
+.cuadro-3 { top: 15%; right: 10%; }
+.cuadro-4 { bottom: 15%; right: 5%; }
+
+/* ==========================================================
+   4. HOJA DERECHA (Sidebar y Navegación)
+   ========================================================== */
 .sidebar {
-    width: 10%;
-    min-width: 60px;
+    width: 15%;
+    min-width: 220px;
     background-color: #fff;
     padding: 60px 0;
     display: flex;
     flex-direction: column;
 }
 
+/* Logo en Sidebar */
+.logo-container {
+    display: block;
+    width: 100%;
+    padding: 0 25px;
+    margin-bottom: 50px;
+}
+
+.sidebar-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.sidebar-logo:hover { filter: grayscale(0%); }
+
+/* Navegación */
 .navigation {
     flex: 1;
     display: flex;
@@ -83,14 +106,7 @@ body {
     counter-reset: menu-index;
 }
 
-.navigation ul {
-    list-style: none;
-    padding: 0 25px;
-}
-
-.menu-spacer {
-    flex: 1;
-}
+.navigation ul { list-style: none; padding: 0 25px; }
 
 .navigation li {
     margin-bottom: 60px;
@@ -104,65 +120,88 @@ body {
     font-size: 15px;
     font-weight: 300;
     text-transform: lowercase;
-    display: block; 
-    position: relative; /* Indispensable para que el punto lo tome como referencia */
-    margin-left: 20px;  /* Empujamos el texto a la derecha para que el punto quepa */
+    display: block;
+    position: relative;
+    margin-left: 20px;
 }
 
+/* Número de índice */
 .navigation a::before {
     content: "0" counter(menu-index);
-    font-family: 'Open Sans', sans-serif;
-    font-size: 11px; 
+    font-size: 11px;
     color: #aaa;
-    display: block; 
-    margin-left: -20px; /* Alineamos el número con el texto */
-    margin-bottom: 2px; 
+    display: block;
+    margin-left: -20px;
+    margin-bottom: 2px;
 }
 
+/* Punto indicador */
 .navigation a::after {
     content: "•";
     position: absolute;
-    right: -05px; /* Posición horizontal del punto */
-    top: 15px;   /* Ajustamos la altura para que quede junto al texto */
+    right: -5px;
+    top: 15px;
     font-size: 16px;
     color: #000;
     opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.destacado-fijo a::after {
-    opacity: 1;
-}
-
+.destacado-fijo a::after,
 .navigation a:hover::after {
     opacity: 1;
-    color: #ccc;
-}
-/* --- LOGO EN SIDEBAR --- */
-.logo-container {
-    display: block;
-    width: 100%;
-    padding: 0 25px; /* Alineado con el margen del menú */
-    margin-bottom: 50px; /* Espacio antes de que empiece el menú 01 */
 }
 
-.sidebar-logo {
-    width: 100%; /* Ocupa el ancho del contenedor con el padding */
-    height: auto;
-    display: block;
-    filter: grayscale(100%); /* Opcional: para que sea más minimalista */
-    transition: filter 0.3s ease;
-}
+.menu-spacer { flex: 1; }
 
-.sidebar-logo:hover {
-    filter: grayscale(0%); /* El logo recupera su color al pasar el mouse */
-}
+/* ==========================================================
+   5. FILTROS Y EFECTOS DE MOVIMIENTO (Proyectos)
+   ========================================================== */
 
-/* Ajuste fino del sidebar para que el logo y el menú respiren */
-.sidebar {
-    width: 15%;
-    min-width: 220px;
-    background-color: #fff;
-    padding: 60px 0; /* Espaciado superior e inferior */
+/* Cuando el contenedor tiene la clase "is-filtered", se ordena al centro */
+.sketch-view.is-filtered {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 60px;
+}
+
+/* Las fotos cuando están filtradas ignoran su posición suelta */
+.sketch-view.is-filtered .scrapbook-item {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: rotate(0deg) !important;
+    width: 25% !important;
+    max-width: 320px;
+}
+
+/* Transiciones para que no sea brusco */
+.scrapbook-item {
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 1;
+}
+
+/* Estilo para las categorías en el Sidebar */
+.sub-menu {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-top: 15px;
+}
+
+.sub-menu a {
+    font-size: 12px !important;
+    color: #999 !important;
+    margin-left: 20px !important;
+    margin-bottom: 8px !important;
+    display: block;
+}
+
+.sub-menu a.active-filter {
+    color: #000 !important;
+    font-weight: 600;
 }
