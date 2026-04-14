@@ -1,89 +1,171 @@
 /* ==========================================================
-   1. CONFIGURACIÓN BASE Y RESET
+   VARIABLES GLOBALES
    ========================================================== */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --color-fondo-pagina:   #e8e8e8;
+    --color-blanco:         #ffffff;
+    --color-borde:          #dcdcdc;
+    --color-banda:          #111111;
+    --color-texto:          #333333;
+    --color-texto-suave:    #aaaaaa;
+    --color-texto-filtro:   #999999;
+    --color-texto-activo:   #000000;
+
+    --fuente-principal:     'Open Sans', sans-serif;
+
+    --radio-cuaderno:       12px;
+    --ancho-banda:          24px;
+    --ancho-sidebar:        220px;
+
+    --transicion-rapida:    0.3s ease;
+    --transicion-suave:     0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ==========================================================
+   1. RESET Y BASE
+   ========================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    background-color: #e8e8e8;
+    background-color: var(--color-fondo-pagina);
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--fuente-principal);
     overflow: hidden;
 }
 
 /* ==========================================================
-   2. ESTRUCTURA DEL CUADERNO (Contenedor principal)
+   2. CUADERNO (contenedor principal)
    ========================================================== */
 .notebook-container {
     display: flex;
     height: 94vh;
     width: 96vw;
-    background-color: #fff;
-    border-radius: 12px;
-    border: 1px solid #dcdcdc;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    background-color: var(--color-blanco);
+    border-radius: var(--radio-cuaderno);
+    border: 1px solid var(--color-borde);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     overflow: hidden;
     position: relative;
 }
 
 .elastic-band {
-    width: 24px;
-    background-color: #111;
+    width: var(--ancho-banda);
+    background-color: var(--color-banda);
     z-index: 20;
+    flex-shrink: 0;
 }
 
 /* ==========================================================
-   3. HOJA IZQUIERDA (Lienzo / Scrapbook)
+   3. LIENZO IZQUIERDO (scrapbook)
    ========================================================== */
 .sketch-view {
     flex: 1;
-    background-color: #ffffff;
+    background-color: var(--color-blanco);
     position: relative;
     overflow: hidden;
+    /* La transición se aplica solo a las propiedades que cambian
+       al activar el modo filtrado */
+    transition: padding var(--transicion-suave);
 }
 
-.logo-zona-roja {
+/* Logo flotante en el lienzo */
+.canvas-logo {
     position: absolute;
-    top: 60%;
-    left: 2%;
-    width: 45%;
+    bottom: 8%;
+    left: 5%;
     z-index: 10;
+    user-select: none;
+    pointer-events: none;
 }
 
-.cuadro-azul {
+.canvas-logo h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-texto-activo);
+    line-height: 1;
+}
+
+.canvas-logo p {
+    font-size: clamp(0.6rem, 1vw, 0.85rem);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: var(--color-texto);
+}
+
+/* Items del scrapbook (fotos sueltas) */
+.scrapbook-item {
     position: absolute;
-    width: 15%;
-    height: auto;
-    object-fit: contain;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    background-color: #f5f5f5;
-    z-index: 5;
+    display: block;
+    overflow: hidden;
+    transition:
+        opacity var(--transicion-suave),
+        transform var(--transicion-suave);
 }
 
-/* Coordenadas */
-.cuadro-1 { top: 5%; left: 5%; }
-.cuadro-2 { top: 30%; right: 40%; }
-.cuadro-3 { top: 15%; right: 10%; }
-.cuadro-4 { bottom: 15%; right: 5%; }
+.scrapbook-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Posiciones individuales de cada foto */
+.item-1 { width: 18%; top:  5%; left:  4%; }
+.item-2 { width: 20%; top: 28%; left: 38%; }
+.item-3 { width: 19%; top: 12%; right: 8%; }
+.item-4 { width: 19%; bottom: 14%; right: 6%; }
 
 /* ==========================================================
-   4. HOJA DERECHA (Sidebar y Navegación)
+   4. MODO FILTRADO
+   Cuando el JS agrega .is-filtered al lienzo, las fotos
+   pasan de posición absoluta libre a grilla flex ordenada.
+   ========================================================== */
+.sketch-view.is-filtered {
+    display: flex;
+    align-items: flex-start;   /* las fotos arrancan desde arriba, no flotan al centro */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 48px;
+    overflow-y: auto;          /* si hay muchas fotos, scroll en vez de corte */
+}
+
+/* Al estar en modo filtrado, cada foto resetea su posición suelta
+   y entra en el flujo flex. Usamos selectores más específicos
+   en vez de !important para sobreescribir las posiciones. */
+.sketch-view.is-filtered .scrapbook-item {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    width: clamp(200px, 28%, 320px);  /* responsive: no se rompe en pantallas chicas */
+}
+
+/* ==========================================================
+   5. SIDEBAR DERECHA
    ========================================================== */
 .sidebar {
-    width: 15%;
-    min-width: 220px;
-    background-color: #fff;
+    width: var(--ancho-sidebar);
+    flex-shrink: 0;
+    background-color: var(--color-blanco);
     padding: 60px 0;
     display: flex;
     flex-direction: column;
 }
 
-/* Logo en Sidebar */
+/* Logo */
 .logo-container {
     display: block;
-    width: 100%;
     padding: 0 25px;
     margin-bottom: 50px;
 }
@@ -93,12 +175,16 @@ body {
     height: auto;
     display: block;
     filter: grayscale(100%);
-    transition: filter 0.3s ease;
+    transition: filter var(--transicion-rapida);
 }
 
-.sidebar-logo:hover { filter: grayscale(0%); }
+.sidebar-logo:hover {
+    filter: grayscale(0%);
+}
 
-/* Navegación */
+/* ==========================================================
+   6. NAVEGACIÓN
+   ========================================================== */
 .navigation {
     flex: 1;
     display: flex;
@@ -106,17 +192,21 @@ body {
     counter-reset: menu-index;
 }
 
-.navigation ul { list-style: none; padding: 0 25px; }
+.navigation ul {
+    list-style: none;
+    padding: 0 25px;
+}
 
-.navigation li {
-    margin-bottom: 60px;
+/* Solo los ítems directos del ul principal incrementan el contador */
+.navigation > ul > li {
+    margin-bottom: 28px;
     position: relative;
     counter-increment: menu-index;
 }
 
 .navigation a {
     text-decoration: none;
-    color: #333;
+    color: var(--color-texto);
     font-size: 15px;
     font-weight: 300;
     text-transform: lowercase;
@@ -125,83 +215,69 @@ body {
     margin-left: 20px;
 }
 
-/* Número de índice */
-.navigation a::before {
+/* Número de índice — solo en los links del nivel principal */
+.navigation > ul > li > a::before {
     content: "0" counter(menu-index);
     font-size: 11px;
-    color: #aaa;
+    color: var(--color-texto-suave);
     display: block;
     margin-left: -20px;
     margin-bottom: 2px;
 }
 
-/* Punto indicador */
-.navigation a::after {
+/* Punto indicador al hover o ítem activo */
+.navigation > ul > li > a::after {
     content: "•";
     position: absolute;
     right: -5px;
     top: 15px;
     font-size: 16px;
-    color: #000;
+    color: var(--color-texto-activo);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity var(--transicion-rapida);
 }
 
-.destacado-fijo a::after,
-.navigation a:hover::after {
+.active-item > a::after,
+.navigation > ul > li > a:hover::after {
     opacity: 1;
 }
-
-.menu-spacer { flex: 1; }
 
 /* ==========================================================
-   5. FILTROS Y EFECTOS DE MOVIMIENTO (Proyectos)
+   7. SUBMENÚ DE FILTROS
    ========================================================== */
-
-/* Cuando el contenedor tiene la clase "is-filtered", se ordena al centro */
-.sketch-view.is-filtered {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    padding: 60px;
-}
-
-/* Las fotos cuando están filtradas ignoran su posición suelta */
-.sketch-view.is-filtered .scrapbook-item {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: rotate(0deg) !important;
-    width: 25% !important;
-    max-width: 320px;
-}
-
-/* Transiciones para que no sea brusco */
-.scrapbook-item {
-    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    opacity: 1;
-}
-
-/* Estilo para las categorías en el Sidebar */
 .sub-menu {
-    list-style: none !important;
-    padding-left: 0 !important;
-    margin-top: 15px;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+/* Los li del submenú no participan del counter ni tienen margen grande */
+.sub-menu li {
+    counter-increment: none;
+    margin-bottom: 0;
+}
+
+/* Los links del submenú no heredan el ::before ni ::after del menú principal */
+.sub-menu a::before,
+.sub-menu a::after {
+    display: none;
 }
 
 .sub-menu a {
-    font-size: 12px !important;
-    color: #999 !important;
-    margin-left: 20px !important;
-    margin-bottom: 8px !important;
+    font-size: 12px;
+    color: var(--color-texto-filtro);
+    margin-left: 20px;
+    margin-bottom: 7px;
     display: block;
+    font-weight: 300;
+    transition: color var(--transicion-rapida);
+}
+
+.sub-menu a:hover {
+    color: var(--color-texto);
 }
 
 .sub-menu a.active-filter {
-    color: #000 !important;
+    color: var(--color-texto-activo);
     font-weight: 600;
 }
