@@ -2,7 +2,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: #e8e8e8; /* Mesa gris clara */
+    background-color: #e8e8e8;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -11,7 +11,7 @@ body {
     overflow: hidden;
 }
 
-/* 2. EL CUADERNO (RECUADRO) */
+/* 2. EL CUADERNO */
 .notebook-container {
     display: flex;
     height: 94vh;
@@ -26,92 +26,83 @@ body {
 
 /* 3. HOJA IZQUIERDA (DIBUJO Y OVERLAYS) */
 .sketch-view {
-    /* Mantenemos el crecimiento flex pero ahora sidebar es menor */
     flex: 1; 
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #fafafa;
     padding: 60px;
-    position: relative; /* Importante para posicionar overlays dentro */
+    position: relative;
     overflow: hidden;
 }
 
-/* El dibujo principal de fondo ocupando el contenedor */
-.main-sketch-bg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Mantiene proporciones sin cortar */
-    opacity: 1; /* Dibujo de fondo sutil si se desea (ej: 0.6) */
-}
-
-/* 4. NOVEDAD: EL LOGO GRANDE (Zona Roja) */
+/* LOGO GRANDE (Zona Roja) - Ahora como imagen */
 .large-logo-overlay {
     position: absolute;
-    /* Ajusta estos valores según la zona roja de tu dibujo */
-    left: 10%; 
-    top: 35%;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Mismo sans que el logo real */
-    font-size: 10vw; /* Tamaño responsivo enorme */
-    font-weight: bold;
-    color: #000;
-    text-transform: uppercase;
-    letter-spacing: -2px;
-    line-height: 1;
+    left: 8%; 
+    top: 30%;
+    width: 40%; /* Ajustá este tamaño para que se vea bien de grande */
     z-index: 10;
 }
 
-/* 5. NOVEDAD: LA GRILLA DE PLACEHOLDERS (Zona Azul) */
+.large-logo-overlay img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* GRILLA IRREGULAR (Zona Azul) */
 .placeholder-grid-overlay {
     position: absolute;
-    /* Ajusta estos valores para colocar la grilla en la zona azul */
     right: 5%;
     bottom: 5%;
-    width: 30%; /* Ancho de la zona de grilla */
-    height: auto;
+    width: 35%;
     z-index: 5;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Grilla de 2 columnas */
-    gap: 15px; /* Espacio entre cuadraditos */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
 .grid-item-placeholder {
     width: 100%;
-    aspect-ratio: 1; /* Fuerza a que sean cuadrados */
-    border: 1px solid #dcdcdc; /* Un borde sutil */
+    aspect-ratio: 1;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Pequeña sombra de papel */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    background: #eee;
 }
+
+/* Toques irregulares para que no parezca una grilla perfecta */
+.grid-item-placeholder:nth-child(1) { transform: translateY(20px); }
+.grid-item-placeholder:nth-child(2) { transform: scale(0.9); margin-top: -30px; }
+.grid-item-placeholder:nth-child(3) { transform: translateX(-10px); }
+.grid-item-placeholder:nth-child(4) { transform: scale(1.1) translateY(-15px); }
 
 .grid-item-placeholder img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* La imagen placeholder se estira y corta para llenar el cuadrado */
-    opacity: 0.8; /* Ligeramente opacos para que se vea que son placeholders */
+    object-fit: cover;
 }
 
-/* 6. ELÁSTICO */
+/* 4. ELÁSTICO */
 .elastic-band {
     width: 24px;
     background-color: #111;
     z-index: 20;
 }
 
-/* 7. HOJA DERECHA (SIDEBAR REDUCIDA) */
+/* 5. HOJA DERECHA (SIDEBAR MUCHO MÁS FINA) */
 .sidebar {
-    /* ANCHO MUCHO MÁS CHICO EN PORCENTAJE (EJ: 18%) */
-    width: 18%; 
+    width: 15%; 
+    min-width: 180px; 
     background-color: #fff;
     padding: 80px 0;
     display: flex;
     flex-direction: column;
-    min-width: 200px; /* Para que no se rompa en pantallas chicas */
 }
 
 .logo-link {
-    margin: 0 20px 80px 20px; /* Reducido margen lateral */
+    margin: 0 20px 80px 20px;
     display: block;
-    text-decoration: none;
 }
 
 .logo-img {
@@ -119,7 +110,7 @@ body {
     height: auto;
 }
 
-/* 8. NAVEGACIÓN Y CONTADORES (Se mantienen finos) */
+/* 6. NAVEGACIÓN (SIN DESTACADO NEGRO) */
 .navigation {
     flex: 1;
     display: flex;
@@ -129,7 +120,7 @@ body {
 
 .navigation ul {
     list-style: none;
-    padding: 0 20px; /* Reducido padding lateral */
+    padding: 0 25px;
 }
 
 .menu-spacer {
@@ -137,74 +128,48 @@ body {
 }
 
 .navigation li {
-    margin-bottom: 18px; /* Menor margen entre links */
+    margin-bottom: 20px;
     position: relative;
     counter-increment: menu-index;
 }
 
 .navigation a {
     text-decoration: none;
-    color: #333;
-    font-size: 15px; /* Texto un poco más chico para un menú más fino */
+    color: #333; /* Texto oscuro normal */
+    font-size: 15px;
     font-weight: 300;
     text-transform: lowercase;
     display: flex;
     align-items: center;
-    height: 32px;
-    position: relative;
-    z-index: 10;
 }
 
+/* Números sutiles */
 .navigation a::before {
     content: "0" counter(menu-index);
     font-family: 'Playfair Display', serif;
-    font-size: 12px; /* Más chico y sutil */
-    font-weight: 400;
-    color: #999;
-    margin-right: 15px; /* Menor margen */
-    width: 25px; /* Menor ancho */
+    font-size: 12px;
+    color: #aaa;
+    margin-right: 15px;
+    width: 25px;
     display: inline-block;
 }
 
-/* Recuperamos el punto (el circulito) que te gustaba */
+/* El punto negro se mantiene para marcar posición */
 .navigation a::after {
     content: "•";
     position: absolute;
-    left: -20px;
+    left: -15px;
     font-size: 16px;
     color: #000;
     opacity: 0;
-    transition: opacity 0.3s;
 }
 
-/* 9. RECTÁNGULO NEGRO FIJO (PROYECTOS) */
-.destacado-fijo a {
-    color: #fff !important;
-}
-
-.destacado-fijo a::before {
-    color: #fff !important;
-}
-
+/* "Proyectos" ahora se ve igual al resto pero con el punto siempre visible */
 .destacado-fijo a::after {
     opacity: 1;
-    color: #fff;
-    left: -12px;
 }
 
-.destacado-fijo::before {
-    content: "";
-    position: absolute;
-    right: -20px; /* Se pega al elástico, ajustado por menor padding */
-    left: -15px;
-    top: -2px;
-    bottom: -2px;
-    background-color: #1a1a1a;
-    z-index: 1;
-    border-radius: 4px 0 0 4px;
-}
-
-.navigation li:not(.destacado-fijo) a:hover::after {
+.navigation a:hover::after {
     opacity: 1;
-    color: #999;
+    color: #ccc;
 }
