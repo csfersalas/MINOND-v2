@@ -63,10 +63,11 @@ body {
 }
 
 /* ==========================================================
-   3. LIENZO IZQUIERDO
+   3. LIENZO IZQUIERDO (Sketch View)
    ========================================================== */
 .sketch-view {
     flex: 1;
+    min-width: 0; /* Seguro Flexbox: evita que el contenido empuje el sidebar */
     background-color: var(--color-blanco);
     position: relative;
     overflow: hidden;
@@ -150,9 +151,19 @@ body {
 }
 
 /* ==========================================================
-   5. SIDEBAR
+   5. SIDEBAR Y LOGO
    ========================================================== */
-/* Reservamos un espacio fijo para el logo en TODAS las páginas */
+.sidebar {
+    width: var(--ancho-sidebar);
+    flex-shrink: 0; /* Seguro Flexbox: el sidebar nunca se achica */
+    background-color: var(--color-blanco);
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Espacio fijo para el logo en TODAS las páginas */
 .logo-box {
     width: 100%;
     padding: 0 25px;
@@ -160,34 +171,23 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 30px;
-    overflow: hidden; /* Esto evita que una imagen gigante se salga */
+    overflow: hidden; /* Evita que una imagen gigante rompa el layout */
 }
 
 .sidebar-logo {
-    max-width: 100%; /* El logo nunca será más ancho que el sidebar */
+    max-width: 100%; /* El logo se adapta al ancho de su caja */
     height: auto;
     display: block;
 }
 
-/* Forzamos que la navegación no tenga márgenes superiores extra */
-.navigation {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-}
-
 /* ==========================================================
    6. NAVEGACIÓN
-   El home usa dos <ul> separados por un .menu-spacer.
-   proyectos.html usa un solo <ul> con submenú anidado.
-   Ambos comparten los estilos base de links.
    ========================================================== */
 .navigation {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 0 25px;
+    padding: 0 25px; /* Padding unificado aquí */
 }
 
 .navigation ul {
@@ -239,7 +239,7 @@ body {
     opacity: 1;
 }
 
-/* Spacer entre bloques de links del home */
+/* Spacer entre bloques de links */
 .menu-spacer {
     flex: 1;
 }
