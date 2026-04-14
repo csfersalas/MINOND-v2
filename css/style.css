@@ -89,15 +89,45 @@ body {
 /* ----------------------------------------------------------
    Imágenes sueltas del HOME (.cuadro-azul + .cuadro-N)
    ---------------------------------------------------------- */
-.cuadro-azul {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    z-index: 5;
+/* 1. Aseguramos que el lienzo sea un flexbox para posicionar el croquis */
+.sketch-view {
+    flex: 1;
+    min-width: 0;
+    background-color: var(--color-blanco);
+    position: relative;
+    overflow: hidden;
+    
+    /* Agregamos esto para alinear el contenido internamente */
+    display: flex;
+    justify-content: flex-end; /* Empuja todo hacia la derecha */
+    align-items: center;      /* Centra verticalmente */
+    padding-right: 10%;       /* Un margen desde la banda negra */
 }
 
-.cuadro-1 { top:  5%; right:  10%; }
+/* 2. Controlamos el tamaño y aspecto del croquis decorativo */
+.cuadro-azul {
+    /* Ya no es absolute, es un elemento flex normal */
+    position: relative; 
+    
+    /* TAMAÑO: Ajustá este % para que sea tan chico como quieras */
+    width: 40%;               /* <--- ESTE ES EL CONTROL DE TAMAÑO */
+    max-width: 500px;         /* Un tope para pantallas muy grandes */
+    height: auto;             /* Mantiene la proporción */
+    
+    object-fit: contain;      /* Muestra la imagen entera sin recortar */
+    
+    /* ESTILO: Un toque sutil */
+    opacity: 0.8;             /* Un poco transparente para que sea sutil */
+    filter: grayscale(20%);   /* Casi blanco y negro, con un toque de color */
+    
+    z-index: 5;
+    
+    /* Eliminamos las coordenadas fijas antiguas */
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+}
 
 /* ----------------------------------------------------------
    Imágenes sueltas de PROYECTOS (.scrapbook-item + .item-N)
