@@ -37,7 +37,7 @@ body {
     position: absolute;
     top: 60%;
     left: 2%;
-    width: 35%;
+    width: 45%;
     height: auto;
     z-index: 10;
 }
@@ -54,7 +54,7 @@ body {
 }
 
 /* Coordenadas según tu croquis */
-.cuadro-1 { top: 5%; left: 35%; }
+.cuadro-1 { top: 10%; left: 15%; }
 .cuadro-2 { top: 15%; right: 10%; }
 .cuadro-3 { top: 60%; right: 15%; }
 .cuadro-4 { bottom: 10%; left: 20%; }
