@@ -93,7 +93,7 @@ body {
 }
 
 .navigation li {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     position: relative;
     counter-increment: menu-index;
 }
