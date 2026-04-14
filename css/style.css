@@ -110,7 +110,7 @@ body {
 
 .navigation a::before {
     content: "0" counter(menu-index);
-    font-family: 'Playfair Display', serif;
+    font-family: 'Open Sans', sans-serif; 
     font-size: 12px;
     color: #aaa;
     margin-right: 15px;
