@@ -105,7 +105,8 @@ body {
     font-weight: 300;
     text-transform: lowercase;
     display: block; 
-    margin-bottom: 5px;
+    position: relative; /* Indispensable para que el punto lo tome como referencia */
+    margin-left: 20px;  /* Empujamos el texto a la derecha para que el punto quepa */
 }
 
 .navigation a::before {
@@ -114,13 +115,15 @@ body {
     font-size: 11px; 
     color: #aaa;
     display: block; 
+    margin-left: -20px; /* Alineamos el número con el texto */
     margin-bottom: 2px; 
 }
 
 .navigation a::after {
     content: "•";
     position: absolute;
-    left: -10 px;
+    left: -15px; /* Posición horizontal del punto */
+    top: 15px;   /* Ajustamos la altura para que quede junto al texto */
     font-size: 16px;
     color: #000;
     opacity: 0;
