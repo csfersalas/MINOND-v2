@@ -110,7 +110,7 @@ body {
     position: relative; 
     
     /* TAMAÑO: Ajustá este % para que sea tan chico como quieras */
-    width: 80%;               /* <--- ESTE ES EL CONTROL DE TAMAÑO */
+    width: 60%;               /* <--- ESTE ES EL CONTROL DE TAMAÑO */
     max-width: 850px;         /* Un tope para pantallas muy grandes */
     height: auto;             /* Mantiene la proporción */
     
