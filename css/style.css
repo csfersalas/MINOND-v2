@@ -80,7 +80,7 @@ body {
     position: absolute;
     bottom: 25%;
     left: 4%;
-    width: clamp(180px, 28%, 380px);
+    width: clamp(250px, 28%, 380px);
     height: auto;
     z-index: 10;
     pointer-events: none;
@@ -89,7 +89,7 @@ body {
 .scrapbook-item {
     position: absolute;      /* Fundamental para la posición libre */
     display: block;
-    cursor: grab;            /* Cursor intuitivo de arrastre */
+    cursor: grab;        
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     z-index: 5;
     
@@ -116,10 +116,10 @@ body {
 }
 
 /* Posiciones de la "Constelación" (ejemplos iniciales) */
-.item-1 { width: 25%; top: 5%; left: 4%;}
-.item-2 { width: 25%; top: 28%; left: 38%;}
-.item-3 { width: 30%; top: 12%; right: 8%; }
-.item-4 { width: 30%; bottom: 14%; right: 6%;}
+.item-1 { width: 40%; top: 5%; left: 4%;}
+.item-2 { width: 40%; top: 28%; left: 38%;}
+.item-3 { width: 45%; top: 12%; right: 8%; }
+.item-4 { width: 45%; bottom: 14%; right: 6%;}
 
 /* ==========================================================
    IMPORTANTE: REESTABLECIMIENTO (Si venías usando filtros)
