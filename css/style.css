@@ -106,8 +106,8 @@ body {
 
 /* Estilo de la imagen interna */
 .scrapbook-item img {
-    width: 150%;
-    height: 150%;
+    width: 120%;
+    height: 120%;
     object-fit: cover;
     display: block;
     pointer-events: none;   
