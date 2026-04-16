@@ -119,51 +119,132 @@ body {
 .item-3 { width: 45%; top: 12%; right: 8%; }
 .item-4 { width: 45%; bottom: 14%; right: 6%;}
 
-/* ----------------------------------------------------------
-   Imágenes sueltas de PROYECTOS (.scrapbook-item + .item-N)
-   ---------------------------------------------------------- */
-.scrapbook-item {
-    position: absolute;
-    display: block;
-    overflow: hidden;
-    transition:
-        opacity var(--transicion-suave),
-        transform var(--transicion-suave);
-    opacity: 1;
+¡Ahhh, te entiendo perfectamente ahora! Querés el caos, querés que parezcan fotos tiradas sobre la mesa, desordenadas y "sueltas", pero que todas estén perfectamente derechas y ortogonales (sin inclinación).
+
+Lograr ese desorden sin rotarlas y usando CSS Grid (para que se acomoden solas las 50 fotos) es un desafío divertido. La clave está en usar Grid para el tamaño y la posición básica, pero usar márgenes negativos y desplazamientos (translate) aleatorios para "sacarlas" de su lugar perfecto.
+
+Aquí tienes el bloque de CSS completo y optimizado para lograr ese efecto de "Mesa de Trabajo Ortogonal". Reemplazá el bloque anterior en tu style.css:
+
+CSS
+/* ==========================================================
+   SECCIÓN: PROYECTOS (Mesa de Trabajo Ortogonal y Aleatoria)
+   ========================================================== */
+
+/* 1. El lienzo: Reducimos el GAP para permitir que las fotos se encimen sutilmente */
+.projects-page {
+    display: grid !important; 
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Columnas un poco más chicas para más densidad */
+    grid-auto-rows: 200px; /* Altura base */
+    grid-auto-flow: dense; 
+    gap: 15px; /* Gap muy chico para que parezcan casi tocándose */
+    padding: 60px;
+    overflow-y: auto;
+    
+    /* Importante: permite que los elementos salgan sutilmente de los bordes internos */
+    overflow-x: hidden; 
 }
 
-.scrapbook-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+/* 2. Base de los ítems: Preparados para el desplazamiento */
+.projects-page .scrapbook-item {
+    position: relative !important; 
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important; /* Reseteo total */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 5;
 }
 
-.item-1 { width: 18%; top:  5%; left:  4%; }
-.item-2 { width: 20%; top: 28%; left: 38%; }
-.item-3 { width: 19%; top: 12%; right:  8%; }
-.item-4 { width: 19%; bottom: 14%; right:  6%; }
+/* --- VARIACIÓN DE TAMAÑOS (Sigue igual, ortogonal) --- */
 
+/* Algunas son más grandes */
+.projects-page .scrapbook-item:nth-child(4n) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Algunas son altas */
+.projects-page .scrapbook-item:nth-child(7n) {
+    grid-row: span 2;
+}
+
+/* --- EL TOQUE "ALEATORIO Y SUELTO" (Sin rotación) --- */
+/* Usamos translate(X, Y) para moverlas sutilmente de su lugar perfecto y márgenes para "encimarlas" */
+
+/* 1. Desplazamiento sutil hacia la izquierda y arriba */
+.projects-page .scrapbook-item:nth-child(odd) {
+    transform: translate(-8px, -12px); 
+    margin-right: -10px; /* Esto hace que la foto de al lado parezca encimarse */
+}
+
+/* 2. Desplazamiento hacia la derecha y abajo */
+.projects-page .scrapbook-item:nth-child(even) {
+    transform: translate(10px, 8px);
+    margin-bottom: -15px; /* Esto hace que la foto de abajo parezca encimarse */
+}
+
+/* 3. Combinación para mayor desorden (cada 3 fotos) */
+.projects-page .scrapbook-item:nth-child(3n+1) {
+    transform: translate(15px, -5px);
+}
+
+/* --- ESTÉTICA DE LA FOTO --- */
+.projects-page .scrapbook-item img {
+    border: 1px solid rgba(0,0,0,0.03); /* Borde aún más sutil */
+    
+    /* Sombra más fuerte y suave para que parezcan "separadas" del fondo y "sueltas" */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- INTERACCIÓN --- */
+.projects-page .scrapbook-item:hover {
+    z-index: 100; /* La trae al frente total */
+    transform: scale(1.05) translate(0,0); /* Al hover se endereza y agranda sutilmente */
+}
+
+.projects-page .scrapbook-item:hover img {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.18); /* Aumenta la sombra al levantarla */
+}
 /* ==========================================================
    4. MODO FILTRADO (solo en proyectos.html)
    ========================================================== */
 .sketch-view.is-filtered {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: center; /* Centra el grupo de fotos filtradas */
     flex-wrap: wrap;
-    gap: 32px;
-    padding: 48px;
+    gap: 40px; /* Más espacio entre fotos para que respiren */
+    padding: 60px;
     overflow-y: auto;
 }
 
+/* Ajuste de los ítems cuando están filtrados */
 .sketch-view.is-filtered .scrapbook-item {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    transform: none;
+    position: relative; /* Salen del modo constelación */
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important; /* Se enderezan para ser legibles */
+    
+    /* CONTROL DE TAMAÑO: Clave para que no se rompa */
+    width: 280px; /* Tamaño ideal de "ficha" de catálogo */
+    flex-grow: 0; /* Que no se estiren para llenar el espacio */
+    margin-bottom: 20px;
+}
+
+/* Mantenemos la sombra de la foto pero más sutil */
+.sketch-view.is-filtered .scrapbook-item img {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+/* Hover en modo filtrado: que se note que podés entrar al proyecto */
+.sketch-view.is-filtered .scrapbook-item:hover {
+    transform: translateY(-5px) !important; /* Se levanta un poquito */
 }
 
 /* ==========================================================
