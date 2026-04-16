@@ -92,8 +92,6 @@ body {
     cursor: grab;        
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     z-index: 5;
-    
-    /* Evita que el navegador intente seleccionar texto o arrastrar el archivo */
     user-select: none;
     touch-action: none;
 }
@@ -102,17 +100,17 @@ body {
 .scrapbook-item:active {
     cursor: grabbing;
     z-index: 100;            /* Trae la imagen al frente al moverla */
-    transform: scale(1.02);  /* Un sutil "levante" al interactuar */
+    transform: scale(1.1);  /* Un sutil "levante" al interactuar */
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 /* Estilo de la imagen interna */
 .scrapbook-item img {
-    width: 100%;
-    height: 100%;
+    width: 150%;
+    height: 150%;
     object-fit: cover;
     display: block;
-    pointer-events: none;    /* Permite que el div padre capture el movimiento */
+    pointer-events: none;   
 }
 
 /* Posiciones de la "Constelación" (ejemplos iniciales) */
@@ -120,15 +118,6 @@ body {
 .item-2 { width: 40%; top: 28%; left: 38%;}
 .item-3 { width: 45%; top: 12%; right: 8%; }
 .item-4 { width: 45%; bottom: 14%; right: 6%;}
-
-/* ==========================================================
-   IMPORTANTE: REESTABLECIMIENTO (Si venías usando filtros)
-   ========================================================== */
-/* Aseguramos que si existía una clase de filtro, no rompa la libertad de movimiento */
-.sketch-view.is-filtered {
-    display: block; /* Desactivamos el grid rígido para recuperar el control absoluto */
-    padding: 0;
-}
 
 /* ----------------------------------------------------------
    Imágenes sueltas de PROYECTOS (.scrapbook-item + .item-N)
