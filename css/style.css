@@ -98,28 +98,33 @@ body {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 
+.projects-page .item-1 { width: 28%; top: 5%;  left: 3%;  transform: rotate(-1deg); }
+.projects-page .item-2 { width: 24%; top: 8%;  left: 32%; transform: rotate(1.5deg); }
+.projects-page .item-3 { width: 22%; top: 6%;  right: 5%; transform: rotate(-2deg); }
+.projects-page .item-4 { width: 26%; bottom: 8%;  left: 5%;  transform: rotate(1deg); }
+.projects-page .item-5 { width: 24%; bottom: 10%; left: 33%; transform: rotate(-1.5deg); }
+.projects-page .item-6 { width: 22%; bottom: 6%;  right: 4%; transform: rotate(2deg); }
+
+.projects-page .scrapbook-item:hover {
+    z-index: 50;
+    transform: scale(1.03) rotate(0deg) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
 /* ==========================================================
    4. PROYECTOS: GRILLA ORTOGONAL (Scrapbook técnico)
    ========================================================== */
 .projects-page {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    grid-auto-rows: 220px;
-    grid-auto-flow: dense;
-    gap: 30px;
-    padding: 60px;
-    overflow-y: auto;
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .projects-page .scrapbook-item {
-    position: relative !important;
-    width: 100% !important;
-    height: 100% !important;
-    transform: none !important;
+    position: absolute;
     cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
+    transition: transform 0.3s ease, opacity 0.3s ease;
+} 
 .projects-page .scrapbook-item img {
     width: 100%;
     height: 100%;
@@ -136,16 +141,21 @@ body {
 /* ==========================================================
    5. FILTRADO (Modo especial para Proyectos)
    ========================================================== */
-.projects-page.is-filtered {
-    display: flex !important;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
 .projects-page.is-filtered .scrapbook-item {
     width: 250px !important;
     flex-grow: 0;
 }
+
+/* ==========================================================
+   5B. BANDA ELÁSTICA (lomo del cuaderno)
+   ========================================================== */
+.elastic-band {
+    width: var(--ancho-banda);
+    background-color: var(--color-banda);
+    height: 100%;
+    flex-shrink: 0;
+}
+
 /* ==========================================================
    6. SIDEBAR
    ========================================================== */
@@ -199,6 +209,11 @@ body {
 .navigation li {
     counter-increment: menu-index;
     margin-bottom: 28px;
+}
+
+.secundary-links li {
+    counter-increment: none;
+    margin-bottom: 10px;
 }
 
 .navigation a {
