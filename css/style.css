@@ -98,6 +98,15 @@ body {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 
+/* Logo flotante en la hoja del home */
+.logo-zona-roja {
+    position: absolute;
+    width: 45%;
+    top: 10%;
+    left: 5%;
+    opacity: 0.6;
+}
+
 .projects-page .item-1 { width: 28%; top: 5%;  left: 3%;  transform: rotate(-1deg); }
 .projects-page .item-2 { width: 24%; top: 8%;  left: 32%; transform: rotate(1.5deg); }
 .projects-page .item-3 { width: 22%; top: 6%;  right: 5%; transform: rotate(-2deg); }
