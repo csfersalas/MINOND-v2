@@ -102,7 +102,7 @@ body {
 .logo-zona-roja {
     position: absolute;
     width: 45%;
-    top: 10%;
+    bottom: 10%;
     left: 5%;
     opacity: 0.6;
 }
