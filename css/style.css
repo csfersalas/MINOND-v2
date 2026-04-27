@@ -1,26 +1,29 @@
-
+/* ==========================================================
+   VARIABLES
+   ========================================================== */
 :root {
-    --color-fondo-pagina:   #f5f5f5;
-    --color-blanco:         #fafafa;
-    --color-borde:          #e8e8e8;
-    --color-banda:          #2a2a2a;
-    --color-texto:          #4a4a4a;
-    --color-texto-suave:    #999999;
-    --color-texto-filtro:   #b8b8b8;
-    --color-texto-activo:   #1a1a1a;
+    --color-fondo-pagina: #e9e9e9;
+    --color-blanco: #ffffff;
+    --color-borde: #e6e6e6;
+    --color-banda: #2a2a2a;
 
-    --fuente-principal:     'Open Sans', sans-serif;
+    --color-texto: #4a4a4a;
+    --color-texto-suave: #999999;
+    --color-texto-filtro: #b8b8b8;
+    --color-texto-activo: #1a1a1a;
 
-    --radio-cuaderno:       8px;
-    --ancho-banda:          20px;
-    --ancho-sidebar:        180px;
+    --fuente-principal: 'Open Sans', sans-serif;
 
-    --transicion-rapida:    0.3s ease;
-    --transicion-suave:     0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    --radio-cuaderno: 8px;
+    --ancho-banda: 20px;
+    --ancho-sidebar: 180px;
+
+    --transicion-rapida: 0.25s ease;
+    --transicion-suave: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* ==========================================================
-   1. RESET Y BASE
+   RESET
    ========================================================== */
 *, *::before, *::after {
     margin: 0;
@@ -40,7 +43,7 @@ body {
 }
 
 /* ==========================================================
-   2. CUADERNO Y SIDEBAR
+   CUADERNO
    ========================================================== */
 .notebook-container {
     display: flex;
@@ -49,120 +52,131 @@ body {
     background-color: var(--color-blanco);
     border-radius: var(--radio-cuaderno);
     border: 1px solid var(--color-borde);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     position: relative;
 }
 
+/* ==========================================================
+   CANVAS / HOJA
+   ========================================================== */
 .sketch-view {
     flex: 1;
     min-width: 0;
-    background-color: var(--color-blanco);
+    background: var(--color-blanco);
     position: relative;
 }
 
-/* ==========================================================
-   3. HOME PAGE
-   ========================================================== */
-.home-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Logo - Mucho más pequeño y sutil */
-.logo-zona-roja {
+/* textura sutil */
+.sketch-view::after {
+    content: "";
     position: absolute;
-    width: 35%;
-    bottom: 10%;
-    left: 6%;
-}
-
-/* Las 4 imágenes - Distribuidas asimétricamente con mucho aire */
-.home-page .scrapbook-item {
-    position: absolute;
-    display: block;
-    overflow: hidden;
-    border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.home-page .scrapbook-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    inset: 0;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.04;
     pointer-events: none;
 }
 
-/* Posiciones asimétricas - Estilo Wabi-sabi */
-.home-page .item-1 { 
-    width: 20%; 
-    top: 12%; 
-    left: 8%; 
-}
-
-.home-page .item-2 { 
-    width: 18%; 
-    top: 24%; 
-    left: 38%; 
-}
-
-.home-page .item-3 { 
-    width: 22%; 
-    top: 8%; 
-    right: 10%;  
-}
-
-.home-page .item-4 { 
-    width: 19%; 
-    bottom: 12%; 
-    right: 12%; 
-}
-
-/* Hover effect sutil */
-.home-page .scrapbook-item:hover {
-    z-index: 50;
-    transform: scale(1.02) rotate(0deg) !important;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    opacity: 0.95;
-}
-
 /* ==========================================================
-   4. PROJECTS PAGE
+   HOME (COMPOSICIÓN ATELIER)
    ========================================================== */
-.projects-page {
+.home-page {
     position: relative;
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
 }
 
-.projects-page .scrapbook-item {
+/* línea editorial */
+.linea-base {
     position: absolute;
-    cursor: pointer;
-    transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-} 
+    width: 60%;
+    height: 1px;
+    background: #dcdcdc;
+    top: 50%;
+    left: 20%;
+}
 
-.projects-page .scrapbook-item img {
+/* logo */
+.logo-zona-roja {
+    position: absolute;
+    width: 26%;
+    bottom: 6%;
+    left: 6%;
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+}
+
+/* imágenes tipo lámina */
+.scrapbook-item {
+    position: absolute;
+    background: white;
+    padding: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.scrapbook-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-.projects-page .item-1 { width: 20%; top: 8%;  left: 6%;  transform: rotate(-0.5deg); }
-.projects-page .item-2 { width: 18%; top: 12%;  left: 38%; transform: rotate(1deg); }
-.projects-page .item-3 { width: 22%; top: 10%;  right: 8%; transform: rotate(-1deg); }
-.projects-page .item-4 { width: 19%; bottom: 12%;  left: 10%;  transform: rotate(0.8deg); }
+/* composición */
+.item-1 { 
+    width: 32%; 
+    top: 14%; 
+    left: 6%; 
+    transform: rotate(-1deg);
+}
 
-.projects-page .scrapbook-item:hover {
+.item-2 { 
+    width: 18%; 
+    top: 42%; 
+    left: 40%; 
+    transform: rotate(1.2deg);
+}
+
+.item-3 { 
+    width: 34%; 
+    top: 10%; 
+    right: 6%;  
+    transform: rotate(-0.8deg);
+}
+
+.item-4 { 
+    width: 20%; 
+    bottom: 10%; 
+    right: 12%; 
+    transform: rotate(0.5deg);
+}
+
+/* hover sutil */
+.scrapbook-item:hover {
     transform: scale(1.02);
     z-index: 10;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* croquis superpuestos */
+.croquis {
+    position: absolute;
+    width: 18%;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+.croquis-1 {
+    top: 20%;
+    left: 30%;
+    transform: rotate(-8deg);
+}
+
+.croquis-2 {
+    bottom: 18%;
+    left: 12%;
+    transform: rotate(6deg);
 }
 
 /* ==========================================================
-   5. BANDA ELÁSTICA (lomo)
+   BANDA (LOMO)
    ========================================================== */
 .elastic-band {
     width: var(--ancho-banda);
@@ -173,7 +187,7 @@ body {
 }
 
 /* ==========================================================
-   6. SIDEBAR - MINIMALISTA
+   SIDEBAR
    ========================================================== */
 .sidebar {
     width: var(--ancho-sidebar);
@@ -186,30 +200,8 @@ body {
     border-left: 1px solid var(--color-borde);
 }
 
-.logo-box {
-    width: 100%;
-    padding: 0 20px;
-    margin-bottom: 50px;
-}
-
-.logo-box a {
-    display: block;
-}
-
-.sidebar-logo {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: grayscale(100%) opacity(0.6);
-    transition: filter var(--transicion-suave), opacity var(--transicion-suave);
-}
-
-.sidebar-logo:hover {
-    filter: grayscale(50%) opacity(0.9);
-}
-
 /* ==========================================================
-   7. NAVEGACIÓN - LIGHT & SPACIOUS
+   NAVEGACIÓN
    ========================================================== */
 .navigation {
     flex: 1;
@@ -247,7 +239,7 @@ body {
     transition: color var(--transicion-rapida);
 }
 
-/* Número de índice - Muy subtle */
+/* numeración */
 .navigation a::before {
     content: "0" counter(menu-index);
     font-size: 10px;
@@ -255,11 +247,10 @@ body {
     display: block;
     margin-left: -24px;
     margin-bottom: 3px;
-    letter-spacing: 0.2px;
     opacity: 0.7;
 }
 
-/* Punto indicador */
+/* punto activo */
 .navigation a::after {
     content: "•";
     position: absolute;
@@ -271,7 +262,6 @@ body {
     transition: opacity var(--transicion-rapida);
 }
 
-.destacado-fijo > a::after,
 .active-item > a::after,
 .navigation a:hover::after {
     opacity: 1;
@@ -285,24 +275,10 @@ body {
     flex: 1;
 }
 
-/* ==========================================================
-   8. SUBMENÚ DE FILTROS
-   ========================================================== */
+/* submenú */
 .sub-menu {
     list-style: none;
-    padding-left: 0;
     margin-top: 12px;
-    counter-reset: menu-index;
-}
-
-.sub-menu li {
-    counter-increment: none;
-    margin-bottom: 0;
-}
-
-.sub-menu a::before,
-.sub-menu a::after {
-    display: none;
 }
 
 .sub-menu a {
@@ -310,38 +286,30 @@ body {
     color: var(--color-texto-filtro);
     margin-left: 24px;
     margin-bottom: 8px;
-    font-weight: 300;
-    letter-spacing: 0.3px;
-    transition: color var(--transicion-rapida);
-    line-height: 1.3;
+    display: block;
 }
 
 .sub-menu a:hover {
     color: var(--color-texto);
 }
 
-.sub-menu a.active-filter {
-    color: var(--color-texto-activo);
-    font-weight: 400;
-}
-
 /* ==========================================================
-   RESPONSIVE (Opcional - para pantallas muy pequeñas)
+   RESPONSIVE
    ========================================================== */
 @media (max-width: 1400px) {
     :root {
         --ancho-sidebar: 160px;
     }
-    
+
     .navigation a {
         font-size: 12px;
         margin-left: 20px;
     }
-    
+
     .navigation a::before {
         margin-left: -20px;
     }
-    
+
     .sub-menu a {
         margin-left: 20px;
         font-size: 10px;
