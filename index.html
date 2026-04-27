@@ -5,46 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MINOND | Estudio</title>
     
+    <!-- Google Fonts - Open Sans (light weights para minimalismo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     
+    <!-- CSS Principal -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
   
     <div class="notebook-container">
+        
+        <!-- ÁREA PRINCIPAL: HOME PAGE CON CONSTELACIÓN MINIMALISTA -->
         <main class="sketch-view home-page" id="scrapbook-canvas">
+            
+            <!-- Logo flotante (ahora mucho más pequeño y sutil) -->
             <img
                 src="img/00_generales/01_logo/logo_MINOND-estudio-2021.jpg"
                 alt="Logo Minond"
                 class="logo-zona-roja"
             >
-
+            
+            <!-- Las 4 imágenes distribuidas asimétricamente -->
+            <!-- Item 1: Superior-izquierda, 20%, cuadrada -->
             <div class="scrapbook-item item-1">
                 <img src="img/00_generales/02_imágenes home/CM-026.09.jpg" alt="Obra 1">
             </div>
+            
+            <!-- Item 2: Centro, 18%, más rectangular -->
             <div class="scrapbook-item item-2">
                 <img src="img/00_generales/02_imágenes home/CM-027.14-01.jpg" alt="Obra 2">
             </div>
+            
+            <!-- Item 3: Superior-derecha, 22%, cuadrada -->
             <div class="scrapbook-item item-3">
                 <img src="img/00_generales/02_imágenes home/CM-027.31.png" alt="Obra 3">
             </div>
+            
+            <!-- Item 4: Inferior-derecha, 19%, rectangular -->
             <div class="scrapbook-item item-4">
                 <img src="img/00_generales/02_imágenes home/CM-027.19.png" alt="Obra 4">
             </div>
-
+            
         </main>
-
       
+        <!-- BANDA ELÁSTICA (lomo del cuaderno) -->
         <div class="elastic-band"></div>
-
+        
+        <!-- SIDEBAR: NAVEGACIÓN MINIMALISTA -->
         <aside class="sidebar">
+            
+            <!-- Logo en sidebar (opcional - comentado si querés solo en home) -->
             <div class="logo-box">
-                <!-- Logo vacío en home — aparece flotante en la hoja -->
+                <!-- <img src="img/00_generales/01_logo/logo_MINOND-estudio-2021.jpg" alt="Logo" class="sidebar-logo"> -->
             </div>
-
+            
+            <!-- NAVEGACIÓN PRINCIPAL -->
             <nav class="navigation">
               
                 <ul class="main-links">
@@ -52,9 +69,11 @@
                         <a href="proyectos.html">proyectos</a>
                     </li>
                 </ul>
-
+                
+                <!-- Espaciador flexible (separa items principales de secundarios) -->
                 <div class="menu-spacer"></div>
-
+                
+                <!-- ENLACES SECUNDARIOS -->
                 <ul class="secundary-links">
                     <li><a href="html/Equipo.html">equipo</a></li>
                     <li><a href="html/coleccion.html">colección de croquis</a></li>
@@ -63,27 +82,27 @@
                 </ul>
             </nav>
         </aside>
-
+        
     </div>
 
+    <!-- SCRIPT: Drag & Drop interactivo -->
     <script>
-
-
         const items = document.querySelectorAll('.scrapbook-item');
-
+        
         items.forEach(item => {
             item.addEventListener('mousedown', startDragging);
         });
 
         function startDragging(e) {
             const item = e.currentTarget;
-
+            
+            // Calcular offset del mouse respecto al elemento
             let shiftX = e.clientX - item.getBoundingClientRect().left;
             let shiftY = e.clientY - item.getBoundingClientRect().top;
 
             function moveAt(pageX, pageY) {
                 item.style.left = (pageX - shiftX) + 'px';
-                item.style.top  = (pageY - shiftY) + 'px';
+                item.style.top = (pageY - shiftY) + 'px';
             }
 
             function onMouseMove(e) {
@@ -91,15 +110,15 @@
             }
 
             document.addEventListener('mousemove', onMouseMove);
-
             
             function onMouseUp() {
                 document.removeEventListener('mousemove', onMouseMove);
                 document.removeEventListener('mouseup', onMouseUp);
             }
-            document.addEventListener('mouseup', onMouseUp);
 
+            document.addEventListener('mouseup', onMouseUp);
           
+            // Prevenir drag nativo
             item.ondragstart = () => false;
         }
     </script>
