@@ -100,17 +100,14 @@ body {
     pointer-events: none;
 }
 
-/* Posiciones asimétricas - Alineadas */
 /* FILA SUPERIOR - Item-3 (izquierda) e Item-2 (centro/derecha) */
 .home-page .item-3 { 
-    width: 300px; 
-    height: 280px;
+    height: 110px;
     top: 100px; 
     left: 280px; 
 }
 
 .home-page .item-2 { 
-    width: 350px; 
     height: 320px;
     top: 100px; 
     left: 620px; 
@@ -127,7 +124,7 @@ body {
 .home-page .item-4 { 
     width: 380px; 
     height: 280px;
-    top: 420px; 
+    top: 440px; 
     left: 600px; 
 }
 
