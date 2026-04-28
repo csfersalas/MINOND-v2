@@ -108,31 +108,55 @@ body {
 }
 
 /* BLOQUES */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* arriba */
+.menu-top {
+  margin-top: 40px;
+}
+
+/* abajo */
+.menu-bottom {
+  margin-top: auto;
+}
+
+/* items */
 .menu-block {
   display: flex;
   flex-direction: column;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
-
-/* SEPARACIÓN DEL PRIMERO */
-.menu-block.destacado {
-  margin-bottom: 250px;
-}
-
-/* NÚMERO */
 .numero {
-  font-size: 10px;
+  font-size: 9px;
   color: #999;
-  letter-spacing: 0.6px;
-  margin-bottom: 10px;
-  font-weight: 300; /* 👈 liviano */
+  letter-spacing: 0.8px;
+  font-weight: 300;
+  margin-left: -6px;
+  margin-bottom: 4px;
+  opacity: 0.6;
+  transition: all 0.25s ease;
 }
 
-/* TEXTO */
 .texto {
-   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  text-decoration: none;
   color: #1a1a1a;
-  font-weight: 300; /* 👈 CLAVE: liviano */
-  letter-spacing: 0.4px;
+  margin-left: 2px;
+  transition: all 0.25s ease;
+}
+
+.menu-block:hover .texto {
+  font-weight: 500;
+  letter-spacing: 0.6px;
+}
+
+.menu-block:hover .numero {
+  opacity: 1;
+  transform: translateX(-2px);
 }
