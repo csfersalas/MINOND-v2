@@ -100,25 +100,25 @@ body {
 .home-page .item-1 { 
     height: 180px; 
     bottom: 12%; 
-    left: 25%; 
+    left: 20%; 
 }
 
 .home-page .item-2 { 
      height: 180px; 
     bottom: 12%; 
-    left: 45%; 
+    left: 38%; 
 }
 
 .home-page .item-3 { 
-    width: 22%; 
+     height: 500px;  
     top: 15%; 
-    right: 50%; 
+    left: 55%; 
 }
 
 .home-page .item-4 { 
-    width: 19%; 
+     height: 150px; 
    top: 15%; 
-    right: 35%; 
+    left: 45%; 
 }
 
 /* SIN hover effects */
