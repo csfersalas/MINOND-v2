@@ -14,7 +14,7 @@
 
     --fuente-principal:     'Open Sans', sans-serif;
 
-    --radio-cuaderno:       5px;
+    --radio-cuaderno:       0px;
     --ancho-banda:          2%;
     --ancho-sidebar:        16.66%; /* 1/6 */
     --ancho-logo:           16.66%; /* 1/6 */
@@ -45,7 +45,7 @@ body {
 }
 
 /* ==========================================================
-   2. CUADERNO Y SIDEBAR - ESTRUCTURA 6/6
+   2. CUADERNO - ESTRUCTURA 6/6
    ========================================================== */
 .notebook-container {
     display: flex;
@@ -59,6 +59,29 @@ body {
     box-shadow: none;
 }
 
+/* ==========================================================
+   3. LOGO SECTION - 1/6
+   ========================================================== */
+.logo-section {
+    flex: 0 0 var(--ancho-logo); /* 1/6 */
+    background-color: var(--color-blanco);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.logo-zona-roja {
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+    max-width: 180px;
+}
+
+/* ==========================================================
+   4. CENTER AREA - 2/3 (4/6) - CON LAS 4 IMÁGENES
+   ========================================================== */
 .sketch-view {
     flex: 0 0 var(--ancho-centro); /* 2/3 - 4/6 */
     min-width: 0;
@@ -66,28 +89,13 @@ body {
     position: relative;
 }
 
-/* ==========================================================
-   3. HOME PAGE - CONSTELACIÓN LIMPIA
-   ========================================================== */
 .home-page {
-    display: flex;
-    align-items: stretch;
-    justify-content: flex-start;
-    position: relative;
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
-.logo-zona-roja {
-    position: absolute;
-    width: 100%; 
-    top: 2%;
-    left: 2%;
-    opacity: 0.5;
-    object-fit: contain;
-    padding: 20px;
-}
-
+/* Las 4 imágenes */
 .home-page .scrapbook-item {
     position: absolute;
     display: block;
@@ -98,6 +106,8 @@ body {
 
 .home-page .scrapbook-item img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     pointer-events: none;
 }
 
@@ -138,13 +148,12 @@ body {
 }
 
 /* ==========================================================
-   4. PROJECTS PAGE - LIMPIA
+   5. PROJECTS PAGE - LIMPIA
    ========================================================== */
 .projects-page {
     position: relative;
-    flex: 0 0 var(--ancho-centro);
-    min-width: 0;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
 }
 
 .projects-page .scrapbook-item {
@@ -171,7 +180,7 @@ body {
 }
 
 /* ==========================================================
-   5. BANDA ELÁSTICA - LIMPIA (2%)
+   6. BANDA ELÁSTICA - LIMPIA (2%)
    ========================================================== */
 .elastic-band {
     width: var(--ancho-banda);
@@ -181,7 +190,7 @@ body {
 }
 
 /* ==========================================================
-   6. SIDEBAR - 1/6 (16.66%)
+   7. SIDEBAR - 1/6 (16.66%)
    ========================================================== */
 .sidebar {
     flex: 0 0 var(--ancho-sidebar); /* 1/6 */
@@ -216,7 +225,7 @@ body {
 }
 
 /* ==========================================================
-   7. NAVEGACIÓN - LIMPIA Y CLARA
+   8. NAVEGACIÓN - LIMPIA Y CLARA
    ========================================================== */
 .navigation {
     flex: 1;
@@ -295,7 +304,7 @@ body {
 }
 
 /* ==========================================================
-   8. SUBMENÚ DE FILTROS - LIMPIO
+   9. SUBMENÚ DE FILTROS - LIMPIO
    ========================================================== */
 .sub-menu {
     list-style: none;
