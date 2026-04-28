@@ -58,14 +58,14 @@ body {
 
 /* abajo izquierda */
 .item-1 {
-  width: 28%;
-  height: 22%;
+  width: auto;
+  height: 22;
   bottom: -6%;
   left: 6%;
 }
 
 .item-2 {
-  width: 28%;
+  width: auto;
   height: 22%;
   bottom: -6%;
   left: 38%;
@@ -74,13 +74,13 @@ body {
 /* SUPERIORES MÁS SUELTAS */
 .item-3 {
   width: 26%;
-  height: 18%;
-  top: 22%;
+  height: auto;
+  top: 18%;
   left: 30%;
 }
 
 .item-4 {
-  width: 28%;
+  width: auto;
   height: 44%;
   top: 18%;
   right: 6%;
