@@ -14,7 +14,7 @@
 
     --fuente-principal:     'Open Sans', sans-serif;
 
-    --radio-cuaderno:       6px;
+    --radio-cuaderno:       0px;
     --ancho-banda:          20px;
     --ancho-sidebar:        180px;
 
@@ -51,7 +51,7 @@ body {
     width: 96vw;
     background-color: var(--color-blanco);
     border-radius: var(--radio-cuaderno);
-    border: 1px solid var(--color-borde);
+    border: none;
     overflow: hidden;
     position: relative;
     box-shadow: none;
@@ -73,15 +73,18 @@ body {
     justify-content: center;
 }
 
-/* Logo - Pequeño y limpio */
+/* Logo - Top-left corner, same height as band */
 .logo-zona-roja {
     position: absolute;
     width: 180px;
-    top: 20%;
-    left: 2%;
-    opacity: .85;
+    height: 180px;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    object-fit: contain;
 }
 
+/* Las 4 imágenes - Limpias sin borde */
 .home-page .scrapbook-item {
     position: absolute;
     display: block;
@@ -97,32 +100,38 @@ body {
     pointer-events: none;
 }
 
+/* Posiciones asimétricas - Pura geometría */
 .home-page .item-1 { 
-    height: 180px; 
-    bottom: 12%; 
-    left: 20%; 
+    width: 220px; 
+    height: 220px;
+    top: 240px; 
+    left: 280px; 
 }
 
 .home-page .item-2 { 
-     height: 180px; 
-    bottom: 12%; 
-    left: 38%; 
+    width: 240px; 
+    height: 200px;
+    top: 240px; 
+    left: 580px; 
 }
 
 .home-page .item-3 { 
-     height: 500px;  
-    top: 15%; 
-    left: 55%; 
+    width: 280px; 
+    height: 260px;
+    top: 140px; 
+    right: 180px; 
 }
 
 .home-page .item-4 { 
-     height: 150px; 
-   top: 15%; 
-    left: 45%; 
+    width: 260px; 
+    height: 240px;
+    bottom: 80px; 
+    left: 520px; 
 }
 
 /* SIN hover effects */
 .home-page .scrapbook-item:hover {
+    /* Nada - sin efectos */
 }
 
 /* ==========================================================
@@ -148,10 +157,10 @@ body {
     box-shadow: none;
 }
 
-.projects-page .item-1 { width: 20%; top: 8%;  left: 6%;  transform: rotate(-0.5deg); }
-.projects-page .item-2 { width: 18%; top: 12%;  left: 38%; transform: rotate(1deg); }
-.projects-page .item-3 { width: 22%; top: 10%;  right: 8%; transform: rotate(-1deg); }
-.projects-page .item-4 { width: 19%; bottom: 12%;  left: 10%;  transform: rotate(0.8deg); }
+.projects-page .item-1 { width: 220px; height: 220px; top: 100px;  left: 100px; }
+.projects-page .item-2 { width: 240px; height: 200px; top: 120px;  left: 400px; }
+.projects-page .item-3 { width: 280px; height: 260px; top: 80px;  right: 150px; }
+.projects-page .item-4 { width: 260px; height: 240px; bottom: 100px;  left: 450px; }
 
 /* SIN hover */
 .projects-page .scrapbook-item:hover {
@@ -179,7 +188,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    border-left: 1px solid var(--color-borde);
+    border-left: none;
 }
 
 .logo-box {
