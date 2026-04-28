@@ -1,29 +1,29 @@
 /* ==========================================================
-   VARIABLES
+   VARIABLES GLOBALES - MINIMALISTA PURO
    ========================================================== */
 :root {
-    --color-fondo-pagina: #e9e9e9;
-    --color-blanco: #ffffff;
-    --color-borde: #e6e6e6;
-    --color-banda: #2a2a2a;
+    /* Paleta neutral y limpia */
+    --color-fondo-pagina:   #f5f5f5;
+    --color-blanco:         #fafafa;
+    --color-borde:          #e8e8e8;
+    --color-banda:          #2a2a2a;
+    --color-texto:          #4a4a4a;
+    --color-texto-suave:    #999999;
+    --color-texto-filtro:   #b8b8b8;
+    --color-texto-activo:   #1a1a1a;
 
-    --color-texto: #4a4a4a;
-    --color-texto-suave: #999999;
-    --color-texto-filtro: #b8b8b8;
-    --color-texto-activo: #1a1a1a;
+    --fuente-principal:     'Open Sans', sans-serif;
 
-    --fuente-principal: 'Open Sans', sans-serif;
+    --radio-cuaderno:       0px;
+    --ancho-banda:          20px;
+    --ancho-sidebar:        180px;
 
-    --radio-cuaderno: 8px;
-    --ancho-banda: 20px;
-    --ancho-sidebar: 180px;
-
-    --transicion-rapida: 0.25s ease;
-    --transicion-suave: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    --transicion-rapida:    0.3s ease;
+    --transicion-suave:     0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* ==========================================================
-   RESET
+   1. RESET Y BASE
    ========================================================== */
 *, *::before, *::after {
     margin: 0;
@@ -43,7 +43,7 @@ body {
 }
 
 /* ==========================================================
-   CUADERNO
+   2. CUADERNO Y SIDEBAR - BORDES LIMPIOS
    ========================================================== */
 .notebook-container {
     display: flex;
@@ -52,98 +52,135 @@ body {
     background-color: var(--color-blanco);
     border-radius: var(--radio-cuaderno);
     border: 1px solid var(--color-borde);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     position: relative;
+    box-shadow: none;
 }
 
-/* ==========================================================
-   CANVAS / HOJA
-   ========================================================== */
 .sketch-view {
     flex: 1;
     min-width: 0;
-    background: var(--color-blanco);
+    background-color: var(--color-blanco);
     position: relative;
-}
-
-/* textura sutil */
-.sketch-view::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.04;
-    pointer-events: none;
 }
 
 /* ==========================================================
-   HOME (COMPOSICIÓN ATELIER)
+   3. HOME PAGE - CONSTELACIÓN LIMPIA
    ========================================================== */
 .home-page {
-    position: relative;
-    padding: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* logo */
+/* Logo - Pequeño y limpio */
 .logo-zona-roja {
-    width: 16%;
-    bottom: 10%;
-    left: 10%;
-    opacity: 0.8;
-}
-
-/* imágenes tipo lámina */
-.scrapbook-item {
     position: absolute;
-    background: white;
-    padding: 6px;
+    width: 12%;
+    bottom: 8%;
+    left: 6%;
+    opacity: 0.5;
 }
 
-.scrapbook-item img {
+/* Las 4 imágenes - Limpias, sin efectos */
+.home-page .scrapbook-item {
+    position: absolute;
+    display: block;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+}
+
+.home-page .scrapbook-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    pointer-events: none;
 }
 
-.item-1 { 
-    width: 15%; 
-    top: 50%; 
-    left: 20%; 
+/* Posiciones asimétricas - Pura geometría */
+.home-page .item-1 { 
+    width: 20%; 
+    aspect-ratio: 1;
+    top: 12%; 
+    left: 8%; 
+    transform: rotate(-0.8deg); 
 }
 
-.item-2 { 
-    width: 16%; 
-    top: 48%; 
-    left: 20%; 
-}
-
-.item-3 { 
-    width: 30%; 
-    top: 14%; 
-    right: 10%;  
-}
-
-.item-4 { 
+.home-page .item-2 { 
     width: 18%; 
+    aspect-ratio: 1.2;
+    top: 24%; 
+    left: 38%; 
+    transform: rotate(1.2deg); 
+}
+
+.home-page .item-3 { 
+    width: 22%; 
+    aspect-ratio: 1;
+    top: 8%; 
+    right: 10%; 
+    transform: rotate(0.5deg); 
+}
+
+.home-page .item-4 { 
+    width: 19%; 
+    aspect-ratio: 1.3;
     bottom: 12%; 
-    right: 16%; 
+    right: 12%; 
+    transform: rotate(-1.3deg); 
+}
+
+/* SIN hover effects */
+.home-page .scrapbook-item:hover {
+    /* Nada - sin efectos */
 }
 
 /* ==========================================================
-   BANDA (LOMO)
+   4. PROJECTS PAGE - LIMPIA
+   ========================================================== */
+.projects-page {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.projects-page .scrapbook-item {
+    position: absolute;
+    cursor: pointer;
+}
+
+.projects-page .scrapbook-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    box-shadow: none;
+}
+
+.projects-page .item-1 { width: 20%; top: 8%;  left: 6%;  transform: rotate(-0.5deg); }
+.projects-page .item-2 { width: 18%; top: 12%;  left: 38%; transform: rotate(1deg); }
+.projects-page .item-3 { width: 22%; top: 10%;  right: 8%; transform: rotate(-1deg); }
+.projects-page .item-4 { width: 19%; bottom: 12%;  left: 10%;  transform: rotate(0.8deg); }
+
+/* SIN hover */
+.projects-page .scrapbook-item:hover {
+    /* Nada */
+}
+
+/* ==========================================================
+   5. BANDA ELÁSTICA - LIMPIA
    ========================================================== */
 .elastic-band {
     width: var(--ancho-banda);
     background-color: var(--color-banda);
     height: 100%;
     flex-shrink: 0;
-    opacity: 0.95;
 }
 
 /* ==========================================================
-   SIDEBAR
+   6. SIDEBAR - MINIMALISTA PURO
    ========================================================== */
 .sidebar {
     width: var(--ancho-sidebar);
@@ -156,8 +193,29 @@ body {
     border-left: 1px solid var(--color-borde);
 }
 
+.logo-box {
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+.logo-box a {
+    display: block;
+}
+
+.sidebar-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%) opacity(0.6);
+}
+
+.sidebar-logo:hover {
+    /* Sin cambios */
+}
+
 /* ==========================================================
-   NAVEGACIÓN
+   7. NAVEGACIÓN - LIMPIA Y CLARA
    ========================================================== */
 .navigation {
     flex: 1;
@@ -192,10 +250,9 @@ body {
     position: relative;
     margin-left: 24px;
     line-height: 1.4;
-    transition: color var(--transicion-rapida);
 }
 
-/* numeración */
+/* Número de índice - Limpio */
 .navigation a::before {
     content: "0" counter(menu-index);
     font-size: 10px;
@@ -203,10 +260,11 @@ body {
     display: block;
     margin-left: -24px;
     margin-bottom: 3px;
+    letter-spacing: 0.2px;
     opacity: 0.7;
 }
 
-/* punto activo */
+/* Punto indicador - Limpio */
 .navigation a::after {
     content: "•";
     position: absolute;
@@ -215,26 +273,44 @@ body {
     font-size: 6px;
     color: var(--color-texto-activo);
     opacity: 0;
-    transition: opacity var(--transicion-rapida);
 }
 
-.active-item > a::after,
-.navigation a:hover::after {
+.destacado-fijo > a::after,
+.active-item > a::after {
     opacity: 1;
 }
 
+/* SIN hover en links */
 .navigation a:hover {
-    color: var(--color-texto-activo);
+    /* Sin cambios */
+}
+
+.navigation a:hover::after {
+    opacity: 1;
 }
 
 .menu-spacer {
     flex: 1;
 }
 
-/* submenú */
+/* ==========================================================
+   8. SUBMENÚ DE FILTROS - LIMPIO
+   ========================================================== */
 .sub-menu {
     list-style: none;
+    padding-left: 0;
     margin-top: 12px;
+    counter-reset: menu-index;
+}
+
+.sub-menu li {
+    counter-increment: none;
+    margin-bottom: 0;
+}
+
+.sub-menu a::before,
+.sub-menu a::after {
+    display: none;
 }
 
 .sub-menu a {
@@ -242,11 +318,18 @@ body {
     color: var(--color-texto-filtro);
     margin-left: 24px;
     margin-bottom: 8px;
-    display: block;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
 }
 
 .sub-menu a:hover {
     color: var(--color-texto);
+}
+
+.sub-menu a.active-filter {
+    color: var(--color-texto-activo);
+    font-weight: 400;
 }
 
 /* ==========================================================
@@ -256,16 +339,16 @@ body {
     :root {
         --ancho-sidebar: 160px;
     }
-
+    
     .navigation a {
         font-size: 12px;
         margin-left: 20px;
     }
-
+    
     .navigation a::before {
         margin-left: -20px;
     }
-
+    
     .sub-menu a {
         margin-left: 20px;
         font-size: 10px;
