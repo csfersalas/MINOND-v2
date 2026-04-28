@@ -85,8 +85,6 @@ body {
     padding: 80px;
 }
 
-/* línea editorial */
-
 /* logo */
 .logo-zona-roja {
     width: 16%;
@@ -113,13 +111,13 @@ body {
 .item-1 { 
     width: 28%; 
     top: 18%; 
-    left: 10%; 
+    left: 50%; 
 }
 
 .item-2 { 
     width: 16%; 
     top: 48%; 
-    left: 42%; 
+    left: 20%; 
 }
 
 .item-3 { 
