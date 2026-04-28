@@ -130,6 +130,7 @@ body {
 
 /* TEXTO */
 .texto {
+   text-decoration: none;
   font-size: 14px;
   color: #1a1a1a;
   font-weight: 300; /* 👈 CLAVE: liviano */
