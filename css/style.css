@@ -9,7 +9,7 @@
     --ancho-logo: 16.66%;
     --ancho-centro: 66.66%;
     --ancho-sidebar: 16.66%;
-    --ancho-banda: 2%;
+    --ancho-banda: 10px;
 
     --fuente-principal: 'Open Sans', sans-serif;
 }
