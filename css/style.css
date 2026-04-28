@@ -58,34 +58,32 @@ body {
 
 /* abajo izquierda */
 .item-1 {
-  width: 26%;
-  height: 22%;
-  bottom: 10%;
-  left: 4%;
-}
-
-/* abajo centro */
-.item-2 {
-  width: 20%;
-  height: 28%;
-  bottom: 10%;
-  left: 36%;
-}
-
-/* arriba centro */
-.item-3 {
   width: 28%;
-  height: 16%;
-  top: 18%;
-  left: 32%;
+  height: 22%;
+  bottom: -6%;
+  left: 6%;
 }
 
-/* derecha grande */
-.item-4 {
+.item-2 {
+  width: 28%;
+  height: 22%;
+  bottom: -6%;
+  left: 38%;
+}
+
+/* SUPERIORES MÁS SUELTAS */
+.item-3 {
   width: 26%;
-  height: 46%;
+  height: 18%;
+  top: 22%;
+  left: 30%;
+}
+
+.item-4 {
+  width: 28%;
+  height: 44%;
   top: 18%;
-  right: 10%;
+  right: 6%;
 }
 
 /* sideA */
@@ -104,7 +102,7 @@ body {
 /* SIDEBAR */
 .sidebar {
   width: 16%;
-  padding: 60px 40px;
+  padding: 100px 40px;
   display: flex;
   flex-direction: column;
 }
@@ -118,7 +116,7 @@ body {
 
 /* SEPARACIÓN DEL PRIMERO */
 .menu-block.destacado {
-  margin-bottom: 120px;
+  margin-bottom: 160px;
 }
 
 /* NÚMERO */
@@ -126,7 +124,7 @@ body {
   font-size: 10px;
   color: #999;
   letter-spacing: 0.6px;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   font-weight: 300; /* 👈 liviano */
 }
 
