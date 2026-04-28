@@ -1,89 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MINOND | Estudio</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
-    
-    <!-- CSS Principal -->
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINOND | Estudio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  
-    <div class="notebook-container">
-        
-        <!-- ÁREA PRINCIPAL: HOME PAGE CON CONSTELACIÓN MINIMALISTA -->
-        <main class="sketch-view home-page" id="scrapbook-canvas">
-    
 
-    <!-- Logo -->
-    <img
-        src="img/00_generales/01_logo/logo_MINOND-estudio-2021.jpg"
-        alt="Logo Minond"
-        class="logo-zona-roja"
-    >
+<div class="notebook-container">
 
-    <!-- IMÁGENES (composición tipo atelier) -->
+  <!-- 1. LOGO (columna izquierda) -->
+  <div class="logo-section">
+    <img src="img/00_generales/01_logo/logo_MINOND-estudio-2021.jpg" class="logo-zona-roja">
+  </div>
+
+  <!-- 2. ÁREA CENTRAL (GRID EDITORIAL) -->
+  <main class="sketch-view">
+
     <div class="scrapbook-item item-1">
-        <img src="img/00_generales/02_imágenes home/CM-026.09.jpg">
+      <img src="img/00_generales/02_imágenes home/CM-026.09.jpg">
     </div>
 
     <div class="scrapbook-item item-2">
-        <img src="img/00_generales/02_imágenes home/CM-027.14-01.jpg">
+      <img src="img/00_generales/02_imágenes home/CM-027.14-01.jpg">
     </div>
 
     <div class="scrapbook-item item-3">
-        <img src="img/00_generales/02_imágenes home/CM-027.31.png">
+      <img src="img/00_generales/02_imágenes home/CM-027.31.png">
     </div>
 
     <div class="scrapbook-item item-4">
-        <img src="img/00_generales/02_imágenes home/CM-027.19.png">
+      <img src="img/00_generales/02_imágenes home/CM-027.19.png">
     </div>
 
-    <img src="img/croquis1.png" class="croquis croquis-1">
-    <img src="img/croquis2.png" class="croquis croquis-2">
+  </main>
 
-</main>
-      
-        <!-- BANDA ELÁSTICA (lomo del cuaderno) -->
-        <div class="elastic-band"></div>
-        
-        <!-- SIDEBAR: NAVEGACIÓN MINIMALISTA -->
-        <aside class="sidebar">
-            
-            <!-- Logo en sidebar (opcional - comentado si querés solo en home) -->
-            <div class="logo-box">
-                <!-- <img src="img/00_generales/01_logo/logo_MINOND-estudio-2021.jpg" alt="Logo" class="sidebar-logo"> -->
-            </div>
-            
-            <!-- NAVEGACIÓN PRINCIPAL -->
-            <nav class="navigation">
-              
-                <ul class="main-links">
-                    <li class="active-item">
-                        <a href="proyectos.html">proyectos</a>
-                    </li>
-                </ul>
-                
-                <!-- Espaciador flexible (separa items principales de secundarios) -->
-                <div class="menu-spacer"></div>
-                
-                <!-- ENLACES SECUNDARIOS -->
-                <ul class="secundary-links">
-                    <li><a href="html/Equipo.html">equipo</a></li>
-                    <li><a href="html/coleccion.html">colección de croquis</a></li>
-                    <li><a href="html/publicaciones.html">publicaciones</a></li>
-                    <li><a href="html/contacto.html">contacto</a></li>
-                </ul>
-            </nav>
-        </aside>
-        
-    </div>
+  <!-- 3. BANDA -->
+  <div class="elastic-band"></div>
 
-  
+  <!-- 4. SIDEBAR -->
+  <aside class="sidebar">
+
+    <nav class="navigation">
+
+      <ul class="main-links">
+        <li class="active-item">
+          <a href="proyectos.html">proyectos</a>
+        </li>
+      </ul>
+
+      <div class="menu-spacer"></div>
+
+      <ul class="secundary-links">
+        <li><a href="#">equipo</a></li>
+        <li><a href="#">colección de croquis</a></li>
+        <li><a href="#">publicaciones</a></li>
+        <li><a href="#">contacto</a></li>
+      </ul>
+
+    </nav>
+
+  </aside>
+
+</div>
+
 </body>
 </html>
