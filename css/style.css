@@ -98,27 +98,27 @@ body {
 }
 
 .home-page .item-1 { 
-    width: 20%; 
+    height: 20%; 
     bottom: 12%; 
     left: 25%; 
 }
 
 .home-page .item-2 { 
-    width: 18%; 
+    height: 18%; 
     bottom: 12%; 
-    left: 38%; 
+    left: 45%; 
 }
 
 .home-page .item-3 { 
     width: 22%; 
-    top: 20%; 
-    left: 50%; 
+    top: 15%; 
+    right: 50%; 
 }
 
 .home-page .item-4 { 
     width: 19%; 
-   top: 20%; 
-    left: 35%; 
+   top: 15%; 
+    right: 35%; 
 }
 
 /* SIN hover effects */
