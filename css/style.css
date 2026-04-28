@@ -102,9 +102,10 @@ body {
 /* SIDEBAR */
 .sidebar {
   width: 16%;
-  padding: 100px 40px;
+  padding: 100px 40px 80px 40px;
   display: flex;
   flex-direction: column;
+  height: 100%;    
 }
 
 /* BLOQUES */
