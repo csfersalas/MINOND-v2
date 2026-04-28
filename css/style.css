@@ -100,33 +100,35 @@ body {
     pointer-events: none;
 }
 
-/* Posiciones asimétricas - Pura geometría */
-.home-page .item-1 { 
-    width: 220px; 
-    height: 220px;
-    top: 240px; 
+/* Posiciones asimétricas - Alineadas */
+/* FILA SUPERIOR - Item-3 (izquierda) e Item-2 (centro/derecha) */
+.home-page .item-3 { 
+    width: 300px; 
+    height: 280px;
+    top: 100px; 
     left: 280px; 
 }
 
 .home-page .item-2 { 
-    width: 240px; 
-    height: 200px;
-    top: 240px; 
-    left: 580px; 
+    width: 350px; 
+    height: 320px;
+    top: 100px; 
+    left: 620px; 
 }
 
-.home-page .item-3 { 
+/* FILA INFERIOR - Item-1 (izquierda) e Item-4 (derecha) */
+.home-page .item-1 { 
     width: 280px; 
-    height: 260px;
-    top: 140px; 
-    right: 180px; 
+    height: 240px;
+    top: 440px; 
+    left: 280px; 
 }
 
 .home-page .item-4 { 
-    width: 260px; 
-    height: 240px;
-    bottom: 80px; 
-    left: 520px; 
+    width: 380px; 
+    height: 280px;
+    top: 420px; 
+    left: 600px; 
 }
 
 /* SIN hover effects */
