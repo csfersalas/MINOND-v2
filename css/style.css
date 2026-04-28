@@ -106,35 +106,35 @@ body {
     pointer-events: none;
 }
 
-/* FILA INFERIOR - Item-1 e Item-2 con misma altura, uno al lado del otro */
+/* FILA INFERIOR - Item-1 pequeño izq, Item-2 grande centro-der */
 .home-page .item-1 { 
-    width: 48%;       /* Casi 50%, dejando gap */
-    height: 35%;      /* Altura fija para la fila inferior */
-    bottom: 10%;      /* Alineados abajo */
-    left: 1%;         /* Posición izquierda */
+    width: 22%;       /* Más pequeño */
+    height: 30%;      /* Altura fija */
+    bottom: 8%;       /* Alineado abajo */
+    left: 8%;         /* Izquierda */
 }
 
 .home-page .item-2 { 
-    width: 48%;       /* Casi 50%, dejando gap */
-    height: 35%;      /* Misma altura que Item-1 */
-    bottom: 10%;      /* Alineados abajo (misma linea) */
-    left: 51%;        /* Posición derecha */
+    width: 35%;       /* Más grande */
+    height: 30%;      /* Misma altura que Item-1 */
+    bottom: 8%;       /* Alineado abajo (misma línea) */
+    left: 38%;        /* Centro-derecha */
 }
 
-/* FILA SUPERIOR - Item-3 centrado verticalmente en Item-2, un poco más arriba */
+/* FILA SUPERIOR - Item-3 mediano centro-izq, Item-4 grande derecha */
 .home-page .item-3 { 
-    width: 35%;       /* Proporción vertical */
-    height: 40%;      /* Más pequeño que los de abajo */
-    top: 15%;         /* Un poco más arriba, centrado verticalmente en Item-2 */
-    left: 2%;         /* Alineado a la izquierda */
+    width: 28%;       /* Mediano */
+    height: 35%;      /* Más pequeño que Item-4 */
+    top: 18%;         /* Centrado verticalmente en el espacio */
+    left: 28%;        /* Centro-izquierda */
 }
 
-/* Item-4 alineado bottom con Item-3, con proporción vertical */
+/* Item-4 alineado bottom con Item-3, más grande */
 .home-page .item-4 { 
-    width: 42%;       /* Más ancho, proporción vertical */
-    height: 45%;      /* Más alto que Item-3 */
+    width: 40%;       /* Más grande */
+    height: 42%;      /* Más alto que Item-3, alineado bottom */
     top: 12%;         /* Alineado bottom con Item-3 */
-    left: 50%;        /* A la derecha, dejando espacio */
+    left: 54%;        /* A la derecha */
 }
 
 /* SIN hover effects */
@@ -165,10 +165,10 @@ body {
     box-shadow: none;
 }
 
-.projects-page .item-1 { width: 48%; height: 35%; bottom: 10%; left: 1%; }
-.projects-page .item-2 { width: 48%; height: 35%; bottom: 10%; left: 51%; }
-.projects-page .item-3 { width: 35%; height: 40%; top: 15%; left: 2%; }
-.projects-page .item-4 { width: 42%; height: 45%; top: 12%; left: 50%; }
+.projects-page .item-1 { width: 22%; height: 30%; bottom: 8%; left: 8%; }
+.projects-page .item-2 { width: 35%; height: 30%; bottom: 8%; left: 38%; }
+.projects-page .item-3 { width: 28%; height: 35%; top: 18%; left: 28%; }
+.projects-page .item-4 { width: 40%; height: 42%; top: 12%; left: 54%; }
 
 /* SIN hover */
 .projects-page .scrapbook-item:hover {
