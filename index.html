@@ -86,43 +86,6 @@
         
     </div>
 
-    <!-- SCRIPT: Drag & Drop interactivo -->
-    <script>
-        const items = document.querySelectorAll('.scrapbook-item');
-        
-        items.forEach(item => {
-            item.addEventListener('mousedown', startDragging);
-        });
-
-        function startDragging(e) {
-            const item = e.currentTarget;
-            
-            // Calcular offset del mouse respecto al elemento
-            let shiftX = e.clientX - item.getBoundingClientRect().left;
-            let shiftY = e.clientY - item.getBoundingClientRect().top;
-
-            function moveAt(pageX, pageY) {
-                item.style.left = (pageX - shiftX) + 'px';
-                item.style.top = (pageY - shiftY) + 'px';
-            }
-
-            function onMouseMove(e) {
-                moveAt(e.pageX, e.pageY);
-            }
-
-            document.addEventListener('mousemove', onMouseMove);
-            
-            function onMouseUp() {
-                document.removeEventListener('mousemove', onMouseMove);
-                document.removeEventListener('mouseup', onMouseUp);
-            }
-
-            document.addEventListener('mouseup', onMouseUp);
-          
-            // Prevenir drag nativo
-            item.ondragstart = () => false;
-        }
-    </script>
-
+  
 </body>
 </html>
