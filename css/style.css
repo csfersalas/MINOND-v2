@@ -98,13 +98,13 @@ body {
 }
 
 .home-page .item-1 { 
-    height: 20%; 
+    height: 180px; 
     bottom: 12%; 
     left: 25%; 
 }
 
 .home-page .item-2 { 
-    height: 18%; 
+     height: 180px; 
     bottom: 12%; 
     left: 45%; 
 }
