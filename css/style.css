@@ -82,34 +82,24 @@ body {
    ========================================================== */
 .home-page {
     position: relative;
+    padding: 80px;
 }
 
 /* línea editorial */
-.linea-base {
-    position: absolute;
-    width: 60%;
-    height: 1px;
-    background: #dcdcdc;
-    top: 50%;
-    left: 20%;
-}
 
 /* logo */
 .logo-zona-roja {
-    position: absolute;
-    width: 26%;
-    bottom: 6%;
-    left: 6%;
-    opacity: 0.85;
-    mix-blend-mode: multiply;
+    width: 16%;
+    bottom: 10%;
+    left: 10%;
+    opacity: 0.8;
 }
 
 /* imágenes tipo lámina */
 .scrapbook-item {
     position: absolute;
     background: white;
-    padding: 8px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    padding: 6px;
 }
 
 .scrapbook-item img {
@@ -121,58 +111,27 @@ body {
 
 /* composición */
 .item-1 { 
-    width: 32%; 
-    top: 14%; 
-    left: 6%; 
-    transform: rotate(-1deg);
+    width: 28%; 
+    top: 18%; 
+    left: 10%; 
 }
 
 .item-2 { 
-    width: 18%; 
-    top: 42%; 
-    left: 40%; 
-    transform: rotate(1.2deg);
+    width: 16%; 
+    top: 48%; 
+    left: 42%; 
 }
 
 .item-3 { 
-    width: 34%; 
-    top: 10%; 
-    right: 6%;  
-    transform: rotate(-0.8deg);
+    width: 30%; 
+    top: 14%; 
+    right: 10%;  
 }
 
 .item-4 { 
-    width: 20%; 
-    bottom: 10%; 
-    right: 12%; 
-    transform: rotate(0.5deg);
-}
-
-/* hover sutil */
-.scrapbook-item:hover {
-    transform: scale(1.02);
-    z-index: 10;
-}
-
-/* croquis superpuestos */
-.croquis {
-    position: absolute;
-    width: 18%;
-    opacity: 0.35;
-    mix-blend-mode: multiply;
-    pointer-events: none;
-}
-
-.croquis-1 {
-    top: 20%;
-    left: 30%;
-    transform: rotate(-8deg);
-}
-
-.croquis-2 {
-    bottom: 18%;
-    left: 12%;
-    transform: rotate(6deg);
+    width: 18%; 
+    bottom: 12%; 
+    right: 16%; 
 }
 
 /* ==========================================================
