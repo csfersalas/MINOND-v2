@@ -88,23 +88,52 @@ body {
   right: 10%;
 }
 
-/* BANDA */
+/* sideA */
 .band {
   width: 2%;
-  background: black;
+  background: #2a2a2a;
+
+  /* efecto cuaderno */
+  box-shadow: 
+    inset -2px 0 0 rgba(255,255,255,0.2),
+    inset 2px 0 0 rgba(0,0,0,0.4);
+
+  position: relative;
 }
 
 /* SIDEBAR */
 .sidebar {
   width: 16%;
-  padding: 40px;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar ul {
-  list-style: none;
+/* BLOQUES */
+.menu-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
 }
 
-.sidebar li {
-  margin-bottom: 20px;
-  font-size: 13px;
+/* SEPARACIÓN DEL PRIMERO */
+.menu-block.destacado {
+  margin-bottom: 120px;
+}
+
+/* NÚMERO */
+.numero {
+  font-size: 10px;
+  color: #999;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+  font-weight: 300; /* 👈 liviano */
+}
+
+/* TEXTO */
+.texto {
+  font-size: 14px;
+  color: #1a1a1a;
+  font-weight: 300; /* 👈 CLAVE: liviano */
+  letter-spacing: 0.4px;
 }
