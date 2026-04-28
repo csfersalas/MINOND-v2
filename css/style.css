@@ -77,9 +77,9 @@ body {
 .logo-zona-roja {
     position: absolute;
     width: 180px;
-    bottom: 20%;
-    left: 6%;
-    opacity: 0.5;
+    top: 20%;
+    left: 2%;
+    opacity: .85;
 }
 
 .home-page .scrapbook-item {
@@ -100,7 +100,7 @@ body {
 .home-page .item-1 { 
     width: 20%; 
     bottom: 12%; 
-    left: 12%; 
+    left: 25%; 
 }
 
 .home-page .item-2 { 
@@ -111,14 +111,14 @@ body {
 
 .home-page .item-3 { 
     width: 22%; 
-    top: 25%; 
+    top: 20%; 
     left: 50%; 
 }
 
 .home-page .item-4 { 
     width: 19%; 
-   top: 25%; 
-    left: 60%; 
+   top: 20%; 
+    left: 35%; 
 }
 
 /* SIN hover effects */
