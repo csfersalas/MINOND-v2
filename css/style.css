@@ -22,7 +22,7 @@ body {
   display: flex;
   background: #fafafa;
   border-radius: 20px;
-  overflow: visible;
+  overflow: hidden;
 }
 
 /* LOGO */
@@ -50,7 +50,7 @@ body {
 
 .item img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
 }
 
@@ -58,30 +58,25 @@ body {
 
 /* abajo izquierda */
 .item-1 {
-  width: auto;
-  height: 22;
+  width: 28%;
   bottom: 6%;
   left: 6%;
 }
 
 .item-2 {
-  width: auto;
-  height: 22%;
+  width: 18%;
   bottom: 6%;
   left: 38%;
 }
 
-/* SUPERIORES MÁS SUELTAS */
 .item-3 {
   width: 26%;
-  height: auto;
   top: 18%;
   left: 30%;
 }
 
 .item-4 {
-  width: auto;
-  height: 44%;
+  width: 28%;
   top: 18%;
   right: 6%;
 }
