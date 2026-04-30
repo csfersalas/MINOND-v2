@@ -1,117 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MINOND | Proyectos</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    
-   <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINOND | Proyectos </title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <div class="notebook-container">
-        
-        <main class="sketch-view projects-page" id="scrapbook-canvas">
-            
-            <a href="p-urbana-1.html" class="scrapbook-item item-1" data-category="infraestructura-urbana">
-                <img src="img/proyectos/urbana_1.jpg" alt="Obra Urbana">
-            </a>
+<div class="notebook-container">
 
-            <a href="CasaLaprida.html" class="scrapbook-item item-2" data-category="vivienda-individual">
-                <img src="img/01_proyectos/02_vivienda individual/01_Casa Laprida/Enscape_2023-05-22-18-33-22_Enscape scene 1.jpg" alt="Laprida">
-            </a>
+  <div class="left-header">
+  <h1>Proyectos</h1>
+</div>
 
-            <a href="p-colectiva-1.html" class="scrapbook-item item-3" data-category="vivienda-colectiva">
-                <img src="img/proyectos/colectiva_1.jpg" alt="Vivienda Colectiva">
-            </a>
+ <main class="projects-view">
 
-            <a href="p-pabellon-1.html" class="scrapbook-item item-4" data-category="pabellones-intervenciones">
-                <img src="img/proyectos/pabellon_1.jpg" alt="Pabellón">
-            </a>
-            
-<a href="CasaTortugasII.html" class="scrapbook-item item-5" data-category="vivienda-individual">
-                <img src="img/01_proyectos/02_vivienda individual/03_Casa Tortugas II/Tortugas A 01.jpg" alt="Laprida">
-            </a>
-            
-            <a href="CasaMontoya.html" class="scrapbook-item item-6" data-category="vivienda-individual">
-                <img src="<img src="img/01_proyectos/02_vivienda individual/04_Montoya/mg_minond_klotz_montoya_20240907_128.jpg">" alt="Montoya">
-            </a>
-            
-            </main>
+  </main>
 
-        <div class="elastic-band"></div>
+  <div class="band"></div>
 
-       <aside class="sidebar">
-    <div class="logo-box">
-        <a href="index.html">
-            <img src="img/00_generales/01_logo/logo_MINOND-estudio-2021.jpg" alt="Logo" class="sidebar-logo">
-        </a>
+ <aside class="sidebar">
+
+  <!-- LOGO -->
+  <img src="img/00_generales/01_logo/logo_MINOND-estudio-2021.jpg" class="logo-small">
+
+  <!-- NAV -->
+  <nav>
+
+    <!-- ARRIBA -->
+    <div class="menu-top">
+      <div class="menu-block destacado">
+        <span class="numero">01.</span>
+        <a href="#" class="texto">Proyectos</a>
+      </div>
     </div>
 
-    <nav class="navigation">
-        <ul class="main-links">
-            <li class="active-item">
-                <a href="proyectos.html">proyectos</a>
-                <ul class="sub-menu">
-                    <li><a href="#" class="filter-btn active-filter" data-filter="all">todos</a></li>
-                    <li><a href="#" class="filter-btn" data-filter="infraestructura-urbana">infraestructura urbana</a></li>
-                    <li><a href="#" class="filter-btn" data-filter="vivienda-individual">vivienda individual</a></li>
-                    <li><a href="#" class="filter-btn" data-filter="vivienda-colectiva">vivienda colectiva</a></li>
-                    <li><a href="#" class="filter-btn" data-filter="pabellones-intervenciones">pabellones e intervenciones</a></li>
-                </ul>
-            </li>
-        </ul>
+    <!-- ABAJO -->
+    <div class="menu-bottom">
+      <div class="menu-block">
+        <span class="numero">02.</span>
+        <a href="#" class="texto">Equipo</a>
+      </div>
 
-        <div class="menu-spacer"></div>
+      <div class="menu-block">
+        <span class="numero">03.</span>
+        <a href="#" class="texto">Publicaciones</a>
+      </div>
 
-        <ul class="secundary-links">
-            <li><a href="html/Equipo.html">equipo</a></li>
-            <li><a href="html/coleccion.html">colección de croquis</a></li>
-            <li><a href="html/publicaciones.html">publicaciones</a></li>
-            <li><a href="html/contacto.html">contacto</a></li>
-        </ul>
-    </nav>
+      <div class="menu-block">
+        <span class="numero">04.</span>
+        <a href="#" class="texto">Colección de croquis</a>
+      </div>
+    </div>
+
+  </nav>
+
 </aside>
-    </div>
 
-    <script>
-        const canvas = document.getElementById('scrapbook-canvas');
-        const buttons = document.querySelectorAll('.filter-btn');
-        const items = document.querySelectorAll('.scrapbook-item');
+</div>
 
-        buttons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const filter = btn.getAttribute('data-filter');
-
-                // 1. Estilo del botón activo
-                buttons.forEach(b => b.classList.remove('active-filter'));
-                btn.classList.add('active-filter');
-
-                // 2. Activar/Desactivar modo centrado
-                if (filter === 'all') {
-                    canvas.classList.remove('is-filtered');
-                } else {
-                    canvas.classList.add('is-filtered');
-                }
-
-                // 3. Filtrar imágenes
-                items.forEach(item => {
-                    const cat = item.getAttribute('data-category');
-                    if (filter === 'all' || cat === filter) {
-                        item.style.display = 'block';
-                        setTimeout(() => item.style.opacity = '1', 10);
-                    } else {
-                        item.style.opacity = '0';
-                        setTimeout(() => item.style.display = 'none', 300);
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
