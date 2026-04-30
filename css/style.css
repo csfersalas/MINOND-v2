@@ -119,7 +119,7 @@ body {
 /* abajo */
 .menu-bottom {
   margin-top: auto;
-  padding-bottom: 40px;
+  padding-bottom: 10px;
 }
 
 /* items */
@@ -142,7 +142,7 @@ body {
 .texto {
   font-size: 15px;
   font-weight: 300;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   text-decoration: none;
   color: #1a1a1a;
   margin-left: 2px;
@@ -156,5 +156,6 @@ body {
 
 .menu-block:hover .numero {
   opacity: 1;
+  font-weight: 500
   transform: translateX(-2px);
 }
