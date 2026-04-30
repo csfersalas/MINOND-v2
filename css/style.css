@@ -100,34 +100,37 @@ body {
   width: 12.5%;
   padding: 100px 40px 80px 40px;
   display: flex;
+   height: 100vh
   flex-direction: column;
-  height: 100%;    
 }
 
-/* BLOQUES */
 .sidebar nav {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
 }
 
-/* arriba */
+.projects-page .logo-small {
+  width: 60px;
+  height: auto;
+  margin-bottom: 40px;
+}
+
 .menu-top {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
-/* abajo */
 .menu-bottom {
   margin-top: auto;
   padding-bottom: 10px;
 }
 
-/* items */
 .menu-block {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
 }
+
 .numero {
   font-size: 9px;
   color: #999;
@@ -156,6 +159,6 @@ body {
 
 .menu-block:hover .numero {
   opacity: 1;
-  font-weight: 500
+  font-weight: 500;
   transform: translateX(-2px);
 }
