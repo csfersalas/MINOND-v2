@@ -27,13 +27,14 @@ body {
 
 /* LOGO */
 .logo-section {
-  width: 16%;
-  padding: 0px;
+  width: 20%;
+  padding: 20px;
 }
 
 .logo {
   width: 180px;
   opacity: 1;
+   top: 4%;
 }
 
 /* HOJA CENTRAL */
@@ -58,26 +59,26 @@ body {
 /* abajo izquierda */
 .item-1 {
   width: 28%;
-  bottom: 6%;
+  top: 70%;
   left: 6%;
 }
 
 .item-2 {
   width: 18%;
-  bottom: 6%;
+  top: 70%;
   left: 38%;
 }
 
 .item-3 {
   width: 26%;
-  top: 10%;
-  left: 30%;
+  top: 8%;
+  right: 25%;
 }
 
 .item-4 {
-  width: 28%;
-  top: 10%;
-  right: 6%;
+  width: 35%;
+  top: 8%;
+  right: 5%;
 }
 
 /* sideA */
