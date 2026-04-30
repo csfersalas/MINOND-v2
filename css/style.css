@@ -32,14 +32,14 @@ body {
 }
 
 .logo {
-  width: 180px;
+  width: 250px;
   opacity: 1;
-   top: 4%;
+   top: 8%;
 }
 
 /* HOJA CENTRAL */
 .sketch-view {
-  width: 66%;
+  width: 67.5%;
   position: relative; /* CLAVE */
   padding: 80px;
 }
@@ -60,7 +60,7 @@ body {
 .item-1 {
   width: 28%;
   top: 70%;
-  left: 6%;
+  left: 16%;
 }
 
 .item-2 {
@@ -72,13 +72,13 @@ body {
 .item-3 {
   width: 26%;
   top: 8%;
-  right: 25%;
+  right: 35%;
 }
 
 .item-4 {
-  width: 15%;
+  width: 20%;
   top: 8%;
-  right: 5%;
+  right: 10%;
 }
 
 /* sideA */
@@ -112,7 +112,7 @@ body {
 
 /* arriba */
 .menu-top {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 /* abajo */
