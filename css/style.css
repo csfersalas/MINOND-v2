@@ -40,8 +40,9 @@ body {
 /* HOJA CENTRAL */
 .sketch-view {
   width: 67.5%;
-  position: relative; /* CLAVE */
-  padding: 80px;
+  position: relative;
+  overflow: visible;
+  padding: 80px
 }
 
 /* IMÁGENES BASE */
@@ -66,18 +67,18 @@ body {
 .item-2 {
   width: 20%;
   top: 70%;
-  left: 2%;
+  left: -5%;
 }
 
 .item-3 {
   width: 26%;
-  top: 8%;
+  bottom: 82%;
   right: 35%;
 }
 
 .item-4 {
   width: 20%;
-  top: 8%;
+  bottom: 82%;
   right: 10%;
 }
 
