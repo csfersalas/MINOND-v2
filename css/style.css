@@ -28,12 +28,12 @@ body {
 /* LOGO */
 .logo-section {
   width: 16%;
-  padding: 40px;
+  padding: 0px;
 }
 
 .logo {
-  width: 120px;
-  opacity: 0.4;
+  width: 180px;
+  opacity: 1;
 }
 
 /* HOJA CENTRAL */
