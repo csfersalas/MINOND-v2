@@ -96,7 +96,7 @@ body {
 
 /* SIDEBAR */
 .sidebar {
-  width: 16%;
+  width: 12.5%;
   padding: 100px 40px 80px 40px;
   display: flex;
   flex-direction: column;
@@ -112,7 +112,7 @@ body {
 
 /* arriba */
 .menu-top {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 /* abajo */
@@ -139,7 +139,7 @@ body {
 }
 
 .texto {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 300;
   letter-spacing: 0.5px;
   text-decoration: none;
