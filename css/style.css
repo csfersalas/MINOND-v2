@@ -54,7 +54,6 @@ body {
   object-fit: contain;
 }
 
-/* COMPOSICIÓN */
 
 /* abajo izquierda */
 .item-1 {
@@ -71,13 +70,13 @@ body {
 
 .item-3 {
   width: 26%;
-  top: 18%;
+  top: 10%;
   left: 30%;
 }
 
 .item-4 {
   width: 28%;
-  top: 18%;
+  top: 10%;
   right: 6%;
 }
 
